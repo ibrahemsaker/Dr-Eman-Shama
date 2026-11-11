@@ -1288,6 +1288,25 @@ select.cc-in{appearance:none;-webkit-appearance:none;cursor:pointer;
   .cc-field{flex-direction:column;align-items:stretch;gap:6px}
   .cc-field>label{flex:none}
 }
+.cc-history{margin-top:22px;padding:18px 0 0;border-top:1px solid #e5eee8}
+.cc-history-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.cc-history-head h4{display:flex;align-items:center;gap:8px;margin:0;color:#144a33;font-size:1rem}
+.cc-history-head h4 i{color:#2ba673}
+.cc-history-actions{display:flex;align-items:center;gap:6px}
+.cc-history-toggle,.cc-history-clear{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;font:inherit;font-size:.82rem;cursor:pointer;padding:7px 9px;border-radius:8px}
+.cc-history-toggle{color:#1f6b4a}
+.cc-history-toggle:hover{background:#eaf5ef}
+.cc-history-clear{color:#9b3c36}
+.cc-history-clear:hover{background:#fff0ee}
+.cc-history-toggle:focus-visible,.cc-history-clear:focus-visible{outline:2px solid #2ba673;outline-offset:2px}
+.cc-history-status{margin:0 0 8px;color:#a33b32;font-size:.84rem}
+.cc-history-list{display:grid;gap:10px;list-style:none;padding:0;margin:0}
+.cc-history-empty{margin:0;padding:14px;text-align:center;background:#f7faf8;border-radius:12px;color:#66756c;font-size:.88rem}
+.cc-history-item{padding:12px 14px;border:1px solid #e7eee9;border-radius:14px;background:#fbfdfb}
+.cc-history-item-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cc-history-cal{color:#1f6b4a;font-size:1.05rem;font-weight:800}
+.cc-history-date{color:#69776f;font-size:.78rem}
+.cc-history-meta{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:5px;color:#647269;font-size:.8rem}
 
 /* ============ Pop-up النتيجة ============ */
 .cm{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .3s ease;direction:rtl}
@@ -1577,6 +1596,21 @@ body.cm-lock{overflow:hidden}
               <div id="ccErr" class="cc-err" hidden></div>
               <button type="submit" class="cc-btn"><i class="bi bi-calculator" aria-hidden="true"></i> حساب السعرات</button>
             </form>
+            <section class="cc-history" aria-labelledby="ccHistoryTitle">
+              <div class="cc-history-head">
+                <h4 id="ccHistoryTitle"><i class="bi bi-clock-history" aria-hidden="true"></i> سجل حساباتك السابقة</h4>
+                <div class="cc-history-actions">
+                  <button type="button" class="cc-history-toggle" id="ccHistoryToggle" aria-expanded="false" aria-controls="ccHistoryContent">
+                    <i class="bi bi-eye" aria-hidden="true"></i> عرض السجل
+                  </button>
+                  <button type="button" class="cc-history-clear" id="ccHistoryClear" hidden>مسح السجل</button>
+                </div>
+              </div>
+              <div id="ccHistoryContent" hidden>
+                <p class="cc-history-status" id="ccHistoryStatus" role="status" hidden></p>
+                <ul class="cc-history-list" id="ccHistoryList" aria-live="polite"></ul>
+              </div>
+            </section>
           </div>
         </div>
 
@@ -2076,7 +2110,7 @@ body.cm-lock{overflow:hidden}
                     rows="3"
                     placeholder="ملاحظات (اختياري)"
                     aria-label="ملاحظات اختيارية"
-                    maxlength="500"
+                    maxlength="2000"
                 ></textarea>
             </div>
 
@@ -2267,11 +2301,131 @@ body.cm-lock{overflow:hidden}
 document.addEventListener('DOMContentLoaded', function () {
   const $ = id => document.getElementById(id);
   const ar = n => Number(n).toLocaleString('ar-EG', { useGrouping: false });
+  const historyKey = 'emanShamaCalorieHistory';
   let gender = null;
   let result = null;
 
   const modalEl = $('ccModal');
   const man = $('ccMan');
+  const historyList = $('ccHistoryList');
+  const historyStatus = $('ccHistoryStatus');
+  const historyContent = $('ccHistoryContent');
+  const historyToggle = $('ccHistoryToggle');
+  const clearHistoryButton = $('ccHistoryClear');
+  let calorieHistory = [];
+
+  historyToggle.addEventListener('click', () => {
+    const isExpanded = historyToggle.getAttribute('aria-expanded') === 'true';
+    historyToggle.setAttribute('aria-expanded', String(!isExpanded));
+    historyContent.hidden = isExpanded;
+    historyToggle.innerHTML = isExpanded
+      ? '<i class="bi bi-eye" aria-hidden="true"></i> عرض السجل'
+      : '<i class="bi bi-eye-slash" aria-hidden="true"></i> إخفاء السجل';
+  });
+
+  function showHistoryStatus(message) {
+    historyStatus.textContent = message;
+    historyStatus.hidden = !message;
+  }
+
+  function renderHistory() {
+    historyList.replaceChildren();
+    clearHistoryButton.hidden = calorieHistory.length === 0;
+
+    if (calorieHistory.length === 0) {
+      const empty = document.createElement('li');
+      empty.className = 'cc-history-empty';
+      empty.textContent = 'ستظهر حساباتك هنا بعد إجراء أول حساب.';
+      historyList.append(empty);
+      return;
+    }
+
+    calorieHistory.forEach(entry => {
+      const item = document.createElement('li');
+      item.className = 'cc-history-item';
+
+      const head = document.createElement('div');
+      head.className = 'cc-history-item-head';
+      const calories = document.createElement('strong');
+      calories.className = 'cc-history-cal';
+      calories.textContent = `${ar(entry.cal)} سعرة / يوم`;
+      const date = document.createElement('time');
+      date.className = 'cc-history-date';
+      date.dateTime = entry.createdAt;
+      date.textContent = new Intl.DateTimeFormat('ar-EG', {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      }).format(new Date(entry.createdAt));
+      head.append(calories, date);
+
+      const meta = document.createElement('div');
+      meta.className = 'cc-history-meta';
+      const goal = document.createElement('span');
+      goal.textContent = `الهدف: ${entry.goalLabel}`;
+      const bmi = document.createElement('span');
+      bmi.textContent = `مؤشر كتلة الجسم: ${ar(entry.bmi)}`;
+      const bmr = document.createElement('span');
+      bmr.textContent = `الأيض الأساسي: ${ar(entry.bmr)} سعرة`;
+      const tdee = document.createElement('span');
+      tdee.textContent = `احتياج الحفاظ: ${ar(entry.tdee)} سعرة`;
+      const macros = document.createElement('span');
+      macros.textContent = `بروتين ${ar(entry.grams[0])} جم · كربوهيدرات ${ar(entry.grams[1])} جم · دهون ${ar(entry.grams[2])} جم`;
+      meta.append(goal, bmi, bmr, tdee, macros);
+      item.append(head, meta);
+      historyList.append(item);
+    });
+  }
+
+  try {
+    const savedHistory = localStorage.getItem(historyKey);
+    if (savedHistory) {
+      const parsedHistory = JSON.parse(savedHistory);
+      if (!Array.isArray(parsedHistory)) {
+        throw new TypeError('Saved calorie history is not an array.');
+      }
+      calorieHistory = parsedHistory.filter(entry =>
+        entry &&
+        Number.isFinite(entry.cal) &&
+        Number.isFinite(entry.bmi) &&
+        Number.isFinite(entry.bmr) &&
+        Number.isFinite(entry.tdee) &&
+        Array.isArray(entry.grams) &&
+        entry.grams.length === 3 &&
+        entry.grams.every(Number.isFinite) &&
+        typeof entry.goalLabel === 'string' &&
+        typeof entry.createdAt === 'string' &&
+        !Number.isNaN(Date.parse(entry.createdAt))
+      );
+    }
+  } catch (error) {
+    console.error('Unable to load calorie history from local storage.', error);
+    showHistoryStatus('تعذر تحميل سجل الحسابات المحفوظ على هذا الجهاز.');
+  }
+  renderHistory();
+
+  clearHistoryButton.addEventListener('click', () => {
+    try {
+      localStorage.removeItem(historyKey);
+      calorieHistory = [];
+      showHistoryStatus('');
+      renderHistory();
+    } catch (error) {
+      console.error('Unable to clear calorie history from local storage.', error);
+      showHistoryStatus('تعذر مسح السجل المحفوظ. حاولي مرة أخرى.');
+    }
+  });
+
+  function saveCalculation(entry) {
+    calorieHistory.unshift(entry);
+    try {
+      localStorage.setItem(historyKey, JSON.stringify(calorieHistory));
+      showHistoryStatus('');
+    } catch (error) {
+      console.error('Unable to save calorie calculation to local storage.', error);
+      showHistoryStatus('تعذر حفظ الحساب في سجل هذا الجهاز، لكن يمكنك متابعة النتيجة.');
+    }
+    renderHistory();
+  }
 
   /* ---------- تحميل مسبق للصورتين ---------- */
   [man.dataset.male, man.dataset.female].forEach(src => { const i = new Image(); i.src = src; });
@@ -2354,7 +2508,36 @@ document.addEventListener('DOMContentLoaded', function () {
     closeModal();
     $('calc').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
-  $('cmCta').addEventListener('click', closeModal);
+  $('cmCta').addEventListener('click', function (event) {
+    event.preventDefault();
+    const notes = $('ms');
+    const calculationDate = new Intl.DateTimeFormat('ar-EG', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    }).format(new Date(result.createdAt));
+    const summary = [
+      'نتيجة حساب السعرات:',
+      `السعرات اليومية: ${ar(result.cal)} سعرة`,
+      `الهدف: ${result.goalLabel}`,
+      `معدل الأيض الأساسي: ${ar(result.bmr)} سعرة`,
+      `احتياج الحفاظ على الوزن: ${ar(result.tdee)} سعرة`,
+      `مؤشر كتلة الجسم: ${ar(result.bmi)} (${result.bmiLabel})`,
+      `بروتين: ${ar(result.grams[0])} جم، كربوهيدرات: ${ar(result.grams[1])} جم، دهون: ${ar(result.grams[2])} جم`,
+      `تاريخ الحساب: ${calculationDate}`
+    ].join('\n');
+    const previousSummary = bookingForm.dataset.calorieSummary || '';
+    const existingNotes = notes.value
+      .replace(previousSummary, '')
+      .replace(/(?:^|\r?\n)[ \t]*نتيجة حساب السعرات:[\s\S]*?^[ \t]*تاريخ الحساب:[^\r\n]*/gm, '')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+    const updatedNotes = existingNotes ? `${existingNotes}\n\n${summary}` : summary;
+    notes.maxLength = Math.max(notes.maxLength, updatedNotes.length);
+    notes.value = updatedNotes;
+    bookingForm.dataset.calorieSummary = summary;
+    closeModal();
+    location.hash = 'book';
+  });
   modalEl.addEventListener('click', e => { if (e.target === modalEl) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modalEl.classList.contains('show')) closeModal(); });
 
@@ -2417,7 +2600,33 @@ document.addEventListener('DOMContentLoaded', function () {
     const sleep = age < 18 ? 9 : 8;
     const water = (w * 0.035).toFixed(1);
 
-    result = { cal, macros };
+    const goalLabel = {
+      lose: 'إنقاص الوزن',
+      maintain: 'تثبيت الوزن',
+      gain: 'زيادة الوزن'
+    }[goal];
+    const bmiRounded = Number(bmi.toFixed(1));
+    result = {
+      cal,
+      macros,
+      bmr: Math.round(bmr),
+      tdee: Math.round(tdee),
+      bmi: bmiRounded,
+      bmiLabel: bmiTx,
+      grams,
+      goal,
+      goalLabel,
+      createdAt: new Date().toISOString()
+    };
+    saveCalculation({
+      cal,
+      bmi: bmiRounded,
+      bmr: result.bmr,
+      tdee: result.tdee,
+      grams,
+      goalLabel,
+      createdAt: result.createdAt
+    });
 
     // ---------- تعبئة الـ Pop-up ----------
     $('cmGoal').textContent = { lose: 'لإنقاص الوزن بشكل صحي', maintain: 'للحفاظ على وزنك الحالي', gain: 'لزيادة الوزن بشكل صحي' }[goal];
