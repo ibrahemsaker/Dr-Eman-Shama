@@ -862,6 +862,8 @@
       }
       .field-icon {
         position: relative;
+        width: 100%;
+        min-width: 0;
       }
       .field-icon > .bi {
         position: absolute;
@@ -875,6 +877,24 @@
       .field-icon select,
       .field-icon textarea {
         padding-inline-start: 42px;
+      }
+      .date-input {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        min-height: 48px;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        font-size: 16px;
+        direction: ltr;
+        text-align: left;
+      }
+      .field-icon.date-field > .bi {
+        display: none;
+      }
+      .field-icon.date-field > .date-input {
+        padding: 10px 12px;
       }
       input,
       select,
@@ -893,6 +913,17 @@
       textarea:focus {
         outline: 0;
         border-color: var(--gold);
+      }
+      .was-validated input:invalid,
+      .was-validated select:invalid,
+      .was-validated textarea:invalid {
+        border-color: #c0392b;
+        box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+      }
+      .validation-hint {
+        margin: -6px 4px 0;
+        color: var(--mut);
+        font-size: 0.82rem;
       }
       details {
         background: var(--card);
@@ -1225,7 +1256,8 @@
 
 .cc-field{display:flex;align-items:center;gap:12px;margin-bottom:14px}
 .cc-field>label{flex:0 0 105px;font-size:.85rem;font-weight:600;color:#10a936;margin:0}
-.cc-in{flex:1;width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:12px;padding:10px 14px;font-size:.88rem;font-family:inherit;background:#fff;color:#374151;outline:none;transition:.2s}
+.cc-in{flex:1 1 0%;width:100%;min-width:0;max-width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:12px;padding:10px 14px;font-size:.88rem;font-family:inherit;background:#fff;color:#374151;outline:none;transition:.2s}
+.cc-in[type="date"]{min-height:44px;padding:10px 12px;font-size:16px;direction:ltr;text-align:left}
 .cc-in:focus{border-color:#2ba673;box-shadow:0 0 0 3px rgba(43,166,115,.15)}
 select.cc-in{appearance:none;-webkit-appearance:none;cursor:pointer;
   background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat left 14px center}
@@ -1484,20 +1516,20 @@ body.cm-lock{overflow:hidden}
 
               <div class="cc-field">
                 <label for="ccDob"><i class="bi bi-calendar3" aria-hidden="true"></i> تاريخ الميلاد</label>
-                <input type="date" id="ccDob" class="cc-in">
+                <input type="date" id="ccDob" class="cc-in date-input" required>
               </div>
 
               <div class="cc-field">
                 <label><i class="bi bi-rulers" aria-hidden="true"></i> الطول والوزن</label>
                 <div class="cc-two">
-                  <input type="number" id="ccH" class="cc-in" placeholder="الطول (سم)" min="100" max="250">
-                  <input type="number" id="ccW" class="cc-in" placeholder="الوزن (كجم)" min="25" max="300" step="0.1">
+                  <input type="number" id="ccH" class="cc-in" placeholder="الطول (سم)" min="100" max="250" step="1" required>
+                  <input type="number" id="ccW" class="cc-in" placeholder="الوزن (كجم)" min="25" max="300" step="0.1" required>
                 </div>
               </div>
 
               <div class="cc-field">
                 <label for="ccAct"><i class="bi bi-activity" aria-hidden="true"></i> مستوى نشاطك</label>
-                <select id="ccAct" class="cc-in">
+                <select id="ccAct" class="cc-in" required>
                   <option value="">اختر مستوى النشاط</option>
                   <option value="1.2">خامل (قليل الحركة)</option>
                   <option value="1.375">نشاط خفيف (1-3 أيام تمرين)</option>
@@ -1509,7 +1541,7 @@ body.cm-lock{overflow:hidden}
 
               <div class="cc-field">
                 <label for="ccGoal"><i class="bi bi-bullseye" aria-hidden="true"></i> هدفك الصحي</label>
-                <select id="ccGoal" class="cc-in">
+                <select id="ccGoal" class="cc-in" required>
                   <option value="">اختر هدفك الصحي</option>
                   <option value="lose">إنقاص الوزن</option>
                   <option value="maintain">تثبيت الوزن</option>
@@ -1519,7 +1551,7 @@ body.cm-lock{overflow:hidden}
 
               <div class="cc-field">
                 <label for="ccAllergy"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> الحساسية</label>
-                <select id="ccAllergy" class="cc-in">
+                <select id="ccAllergy" class="cc-in" required>
                   <option value="none">لا يوجد</option>
                   <option value="gluten">الجلوتين</option>
                   <option value="lactose">اللاكتوز</option>
@@ -1531,7 +1563,7 @@ body.cm-lock{overflow:hidden}
 
               <div class="cc-field">
                 <label for="ccMed"><i class="bi bi-heart-pulse" aria-hidden="true"></i> الحالات الطبية؟</label>
-                <select id="ccMed" class="cc-in">
+                <select id="ccMed" class="cc-in" required>
                   <option value="none">لا يوجد</option>
                   <option value="diabetes">السكري</option>
                   <option value="pressure">ضغط الدم</option>
@@ -1979,7 +2011,7 @@ body.cm-lock{overflow:hidden}
 
         </div>
 
-        <form id="f" class="rv l">
+        <form id="f" class="rv l" novalidate>
 
             <label class="sr-only" for="nm">الاسم بالكامل</label>
             <div class="field-icon">
@@ -1989,6 +2021,8 @@ body.cm-lock{overflow:hidden}
                     type="text"
                     placeholder="الاسم بالكامل"
                     aria-label="الاسم بالكامل"
+                    minlength="2"
+                    maxlength="60"
                     required
                 />
             </div>
@@ -2001,6 +2035,8 @@ body.cm-lock{overflow:hidden}
                     type="tel"
                     placeholder="رقم الموبايل"
                     aria-label="رقم الموبايل"
+                    inputmode="tel"
+                    maxlength="16"
                     required
                 />
             </div>
@@ -2008,7 +2044,7 @@ body.cm-lock{overflow:hidden}
             <label class="sr-only" for="sv">الخدمة المطلوبة</label>
             <div class="field-icon">
                 <i class="bi bi-list-check" aria-hidden="true"></i>
-                <select id="sv" aria-label="الخدمة المطلوبة">
+                <select id="sv" aria-label="الخدمة المطلوبة" required>
                     <option>إنقاص الوزن</option>
                     <option>زيادة الوزن</option>
                     <option>تغذية الحمل والرضاعة</option>
@@ -2019,14 +2055,18 @@ body.cm-lock{overflow:hidden}
             </div>
 
             <label class="sr-only" for="dt">التاريخ المفضل</label>
-            <div class="field-icon">
+            <div class="field-icon date-field">
                 <i class="bi bi-calendar3" aria-hidden="true"></i>
                 <input
                     id="dt"
                     type="date"
+                    class="date-input"
                     aria-label="التاريخ المفضل"
+                    aria-describedby="bookingDateHint"
+                    required
                 />
             </div>
+            <p class="validation-hint" id="bookingDateHint">تاريخ الحجز مطلوب، اختاري اليوم أو موعداً قادماً.</p>
 
             <label class="sr-only" for="ms">ملاحظات اختيارية</label>
             <div class="field-icon">
@@ -2036,6 +2076,7 @@ body.cm-lock{overflow:hidden}
                     rows="3"
                     placeholder="ملاحظات (اختياري)"
                     aria-label="ملاحظات اختيارية"
+                    maxlength="500"
                 ></textarea>
             </div>
 
@@ -2069,9 +2110,49 @@ body.cm-lock{overflow:hidden}
       const WA = "201129352754";
       const $ = (s) => document.querySelector(s),
         $$ = (s) => [...document.querySelectorAll(s)];
+      const localDateValue = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      };
       $("#y").textContent = new Date().getFullYear();
       $("#fwa").href =
         `https://wa.me/${WA}?text=${encodeURIComponent("السلام عليكم، أريد الحجز في عيادة د. إيمان شامة")}`;
+      const bookingForm = $("#f");
+      const bookingName = $("#nm");
+      const bookingPhone = $("#ph");
+      const bookingDate = $("#dt");
+      bookingDate.min = localDateValue(new Date());
+
+      function validateBookingField(field) {
+        field.setCustomValidity("");
+        const value = field.value.trim();
+
+        if (field === bookingName && value && !/^[A-Za-z\u0600-\u06FF][A-Za-z\u0600-\u06FF\s'-]{1,59}$/.test(value)) {
+          field.setCustomValidity("اكتبي الاسم بحروف عربية أو إنجليزية فقط.");
+        }
+
+        if (field === bookingPhone && value) {
+          let phone = value
+            .replace(/[٠-٩]/g, (digit) => String(digit.charCodeAt(0) - 0x660))
+            .replace(/[۰-۹]/g, (digit) => String(digit.charCodeAt(0) - 0x6f0))
+            .replace(/[\s()-]/g, "");
+          phone = phone.replace(/^(?:\+20|0020)/, "0");
+          if (!/^01[0125]\d{8}$/.test(phone)) {
+            field.setCustomValidity("أدخلي رقم موبايل مصرياً صحيحاً مكوّناً من 11 رقماً.");
+          }
+        }
+
+        if (field === bookingDate && value && value < bookingDate.min) {
+          field.setCustomValidity("اختاري تاريخ اليوم أو تاريخاً قادماً.");
+        }
+      }
+
+      [bookingName, bookingPhone, bookingDate].forEach((field) => {
+        field.addEventListener("input", () => validateBookingField(field));
+        field.addEventListener("change", () => validateBookingField(field));
+      });
 
       const nav = $("#nav"),
         pages = $$(".pg"),
@@ -2170,9 +2251,13 @@ body.cm-lock{overflow:hidden}
       }, 4500);
 
       // booking via WhatsApp
-      $("#f").onsubmit = (e) => {
+      bookingForm.onsubmit = (e) => {
         e.preventDefault();
-        const msg = `السلام عليكم، أريد حجز موعد في عيادة د. إيمان شامة\n\nالاسم: ${$("#nm").value}\nالموبايل: ${$("#ph").value}\nالخدمة: ${$("#sv").value}\nالتاريخ المفضل: ${$("#dt").value || "غير محدد"}\nملاحظات: ${$("#ms").value || "—"}`;
+        bookingForm.classList.add("was-validated");
+        [bookingName, bookingPhone, bookingDate].forEach(validateBookingField);
+        if (!bookingForm.reportValidity()) return;
+
+        const msg = `السلام عليكم، أريد حجز موعد في عيادة د. إيمان شامة\n\nالاسم: ${bookingName.value.trim()}\nالموبايل: ${bookingPhone.value.trim()}\nالخدمة: ${$("#sv").value}\nتاريخ الحجز: ${bookingDate.value}\nملاحظات: ${$("#ms").value.trim() || "—"}`;
         open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
       };
       go(0);
@@ -2210,7 +2295,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  $('ccDob').max = new Date().toISOString().split('T')[0];
+  const today = new Date();
+  $('ccDob').max = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, '0'),
+    String(today.getDate()).padStart(2, '0')
+  ].join('-');
 
   function showErr(msg) {
     const e = $('ccErr');
@@ -2271,6 +2361,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- الحساب ---------- */
   $('ccForm').addEventListener('submit', function (e) {
     e.preventDefault();
+    this.classList.add('was-validated');
     $('ccErr').hidden = true;
 
     const dob = $('ccDob').value;
@@ -2288,6 +2379,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!w || w < 25 || w > 300) return showErr('أدخل وزناً صحيحاً بالكيلوجرام (25 - 300)');
     if (!act) return showErr('من فضلك اختر مستوى النشاط');
     if (!goal) return showErr('من فضلك اختر هدفك الصحي');
+    if (!this.reportValidity()) return;
 
     // 1) معدل الأيض الأساسي (Mifflin-St Jeor)
     const bmr = 10 * w + 6.25 * h - 5 * age + (gender === 'male' ? 5 : -161);
