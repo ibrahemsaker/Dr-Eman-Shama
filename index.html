@@ -1,50 +1,37 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>عيادة د. إيمان شامة للتغذية العلاجية</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --g: #1f6b4a;
-        --g2: #144a33;
-        --gl: #e8f3ec;
-        --gold: #c9a24b;
-        --gold2: #e4c77a;
-        --bg: #fff;
-        --bg2: #f7faf8;
-        --tx: #23322b;
-        --mut: #5f6f66;
-        --card: #fff;
-        --sh: 0 10px 30px rgba(20, 74, 51, 0.12);
-        box-sizing: border-box;
-        padding-top: env(safe-area-inset-top, 0px);
-        padding-bottom: env(safe-area-inset-bottom, 0px);
-      }
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme="light"]) {
-          --bg: #0f1b15;
-          --bg2: #13231b;
-          --tx: #e9f1ec;
-          --mut: #a9bab1;
-          --card: #172a21;
-          --gl: #1b3328;
-          --sh: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-      }
-      :root[data-theme="dark"] {
-        --bg: #0f1b15;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>عيادة د. إيمان شامة للتغذية العلاجية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --g: #1f6b4a;
+      --g2: #144a33;
+      --g-text: #1d5e43;
+      --gl: #e8f3ec;
+      --gold: #c9a24b;
+      --gold2: #e4c77a;
+      --gold-text: #8b682d;
+      --bg: #fff;
+      --bg2: #f7faf8;
+      --tx: #23322b;
+      --mut: #5f6f66;
+      --card: #fff;
+      --sh: 0 10px 30px rgba(20, 74, 51, 0.12);
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --g-text: #8fc9a9;
+        --gold-text: #e4c77a;
+        --bg: #163425;
         --bg2: #13231b;
         --tx: #e9f1ec;
         --mut: #a9bab1;
@@ -52,1441 +39,2375 @@
         --gl: #1b3328;
         --sh: 0 10px 30px rgba(0, 0, 0, 0.4);
       }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Cairo", Tahoma, Arial, sans-serif;
-        background: var(--bg);
-        color: var(--tx);
-        line-height: 1.8;
-        overflow-x: hidden;
-      }
-      /* ================= IMAGE SLIDER ================= */
-
-.slider {
-    position: relative;
-    height: 100vh;
-    min-height: 600px;
-    overflow: hidden;
-    background: #144a33;
-}
-
-.slide {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease, visibility 1s ease;
-    overflow: hidden;
-}
-
-.slide.on {
-    opacity: 1;
-    visibility: visible;
-    z-index: 1;
-}
-
-/* Background Image */
-.slide-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.slide-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transform: scale(1);
-    transition: transform 6s ease;
-}
-
-.slide.on .slide-bg img {
-    transform: scale(1.08);
-}
-
-/* Dark Overlay */
-.slide-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        270deg,
-        rgba(15, 55, 37, 0.92) 0%,
-        rgba(15, 55, 37, 0.78) 45%,
-        rgba(15, 55, 37, 0.25) 100%
-    );
-}
-
-/* Content */
-.slide .container {
-    position: relative;
-    z-index: 2;
-    width: min(1150px, 92%);
-}
-
-.slide .tx {
-    max-width: 650px;
-}
-
-.slide small {
-    color: #e4c77a;
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-.slide h1 {
-    font-size: clamp(2rem, 5vw, 3.3rem);
-    line-height: 1.5;
-    margin: 15px 0;
-    color: #fff;
-    font-weight: 800;
-}
-
-.slide p {
-    color: #fff;
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-}
-
-/* Text Animation */
-.slide .tx > * {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.slide.on .tx > * {
-    animation: slideText 0.8s forwards;
-}
-
-.slide.on .tx > *:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.slide.on .tx > *:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.slide.on .tx > *:nth-child(4) {
-    animation-delay: 0.6s;
-}
-
-@keyframes slideText {
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
-}
 
-/* Mobile */
-@media (max-width: 768px) {
+    :root[data-theme="dark"] {
+      --g-text: #8fc9a9;
+      --gold-text: #e4c77a;
+      --bg: #0f1b15;
+      --bg2: #13231b;
+      --tx: #e9f1ec;
+      --mut: #a9bab1;
+      --card: #172a21;
+      --gl: #1b3328;
+      --sh: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Cairo", Tahoma, Arial, sans-serif;
+      background-image: linear-gradient(to right, var(--bg2), var(--g2));
+      color: var(--tx);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ================= IMAGE SLIDER ================= */
+
     .slider {
-        min-height: 650px;
-        height: 90vh;
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      background: #144a33;
     }
 
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease, visibility 1s ease;
+      overflow: hidden;
+    }
+
+    .slide.on {
+      opacity: 1;
+      visibility: visible;
+      z-index: 1;
+    }
+
+    /* Background Image */
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .slide-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1);
+      transition: transform 6s ease;
+    }
+
+    .slide.on .slide-bg img {
+      transform: scale(1.08);
+    }
+
+    /* Dark Overlay */
+    .slide-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(270deg,
+          rgba(15, 55, 37, 0.92) 0%,
+          rgba(15, 55, 37, 0.78) 45%,
+          rgba(15, 55, 37, 0.25) 100%);
+    }
+
+    /* Content */
     .slide .container {
-        text-align: center;
+      position: relative;
+      z-index: 2;
+      width: min(1150px, 92%);
     }
 
     .slide .tx {
-        max-width: 100%;
+      max-width: 650px;
+    }
+
+    .slide small {
+      color: #e4c77a;
+      font-weight: 700;
+      font-size: 1.1rem;
     }
 
     .slide h1 {
-        font-size: 2rem;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.5;
+      margin: 15px 0;
+      color: #fff;
+      font-weight: 800;
     }
 
     .slide p {
-        font-size: 0.95rem;
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
     }
 
-    .slide-bg::after {
+    /* Text Animation */
+    .slide .tx>* {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .slide.on .tx>* {
+      animation: slideText 0.8s forwards;
+    }
+
+    .slide.on .tx>*:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .slide.on .tx>*:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .slide.on .tx>*:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes slideText {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .slider {
+        min-height: 650px;
+        height: 90vh;
+      }
+
+      .slide .container {
+        text-align: center;
+      }
+
+      .slide .tx {
+        max-width: 100%;
+      }
+
+      .slide h1 {
+        font-size: 2rem;
+      }
+
+      .slide p {
+        font-size: 0.95rem;
+      }
+
+      .slide-bg::after {
         background: rgba(15, 55, 37, 0.72);
+      }
+
+      .arr {
+        display: none;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .title span {
+      color: var(--gold2);
+      font-weight: 700;
+    }
+
+    .title h2 {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(20, 74, 51, 0.55);
+      font-weight: 800;
+    }
+
+    .title>i {
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--g));
+      margin: 10px auto 0;
+      border-radius: 4px;
+    }
+
+    .title span .bi {
+      display: inline;
+      width: auto;
+      height: auto;
+      margin-inline-end: 6px;
+      background: none;
+      border-radius: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 11px 24px;
+      border-radius: 50px;
+      font-weight: 700;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    nav .btn,
+    .slider .btn {
+      min-height: 0;
+      font-size: 10px;
+      line-height: normal;
+    }
+
+    .btn:focus-visible,
+    .cc-g:focus-visible,
+    .cc-btn:focus-visible,
+    .cm-x:focus-visible,
+    .cm-cta:focus-visible,
+    .cm-redo:focus-visible {
+      outline: 3px solid var(--gold2);
+      outline-offset: 3px;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #2b2208;
+      box-shadow: 0 8px 20px rgba(201, 162, 75, 0.4);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(201, 162, 75, 0.48);
+    }
+
+    .btn-line {
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    .btn-line:hover {
+      background: #fff;
+      color: var(--g-text);
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: #fff;
+    }
+
+    .btn-wa:hover {
+      background: #1fb95a;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+      transform: translateY(-2px);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      inset-inline: 0;
+      z-index: 50;
+      padding: 14px 0;
+      padding-top: calc(14px + env(safe-area-inset-top, 0px));
+      transition: 0.35s;
+    }
+
+    nav.sc {
+      background-image: linear-gradient(to right, var(--bg2), var(--g2));
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding-block: 8px;
+      padding-top: calc(8px + env(safe-area-inset-top, 0px));
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo b {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: grid;
+      place-items: center;
+    }
+
+    nav.sc .logo {
+      color: #fff;
+    }
+
+    .links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .links a {
+      color: #fff;
+      font-weight: 600;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    nav.sc .links a {
+      color: #fff;
+    }
+
+    .links a:not(.btn)::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: 0.3s;
+    }
+
+    .links a:hover::after,
+    .links a.act::after {
+      width: 100%;
+    }
+
+    .links a.btn,
+    nav.sc .links a.btn {
+      color: #2b2208;
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 0;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .menu-close {
+      display: none;
+    }
+
+    nav.sc .burger {
+      color: #fff;
+    }
+
+    /* illustrations */
+    .im {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .ib {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: var(--gold);
+      padding: 8px;
+      margin-bottom: 14px;
+      transition: 0.35s;
+    }
+
+    .ib .bi,
+    .photo>.bi {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+      font-size: 2.5rem;
+    }
+
+    .photo>.bi {
+      font-size: 5rem;
+    }
+
+    .card:hover .ib {
+      transform: rotate(-8deg) scale(1.08);
+    }
+
+    /* slider */
+    .slider {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      background: var(--g2);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 1s,
+        visibility 1s;
+      color: #fff;
+    }
+
+    .slide.on {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slide:nth-child(1) {
+      background: linear-gradient(135deg, #144a33, #1f6b4a 60%, #2d8a60);
+    }
+
+    .slide:nth-child(2) {
+      background: linear-gradient(135deg, #1f6b4a, #144a33 55%, #0e3524);
+    }
+
+    .slide:nth-child(3) {
+      background: linear-gradient(135deg, #2d8a60, #1f6b4a 50%, #144a33);
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      border: 2px solid rgba(228, 199, 122, 0.35);
+      top: -120px;
+      left: -120px;
+      animation: spin 30s linear infinite;
+    }
+
+    .slide .container {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .slide small {
+      color: var(--gold2);
+      font-weight: 700;
+    }
+
+    .slide h1 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.3;
+      margin: 10px 0;
+      font-weight: 800;
+    }
+
+    .slide p {
+      max-width: 540px;
+      opacity: 0.92;
+      margin-bottom: 26px;
+      font-size: 1.1rem;
+    }
+
+    .slide .art {
+      width: min(430px, 100%);
+      aspect-ratio: 1;
+      margin: auto;
+      animation: float 5s ease-in-out infinite;
+      filter: drop-shadow(0 25px 30px rgba(0, 0, 0, 0.35));
+    }
+
+    .slide .tx>* {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .slide.on .tx>* {
+      animation: up 0.8s forwards;
+    }
+
+    .slide.on .tx>*:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .slide.on .tx>*:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .slide.on .tx>*:nth-child(4) {
+      animation-delay: 0.6s;
     }
 
     .arr {
-        display: none;
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.3s;
     }
-}
-      a {
-        text-decoration: none;
-        color: inherit;
+
+    .arr:hover {
+      background: var(--gold);
+    }
+
+    .arr.p {
+      right: 18px;
+    }
+
+    .arr.n {
+      left: 18px;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 28px;
+      inset-inline: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 5;
+    }
+
+    .dots button {
+      width: 12px;
+      height: 12px;
+      border-radius: 12px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .dots button.on {
+      width: 34px;
+      background: var(--gold);
+    }
+
+    .bar {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold);
+      width: 0;
+      z-index: 5;
+    }
+
+    /* inner page banner */
+    .ph {
+      background: linear-gradient(135deg, var(--g2), var(--g));
+      color: #fff;
+      text-align: center;
+      padding: 130px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ph::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(201, 162, 75, 0.14);
+      bottom: -120px;
+      left: -60px;
+    }
+
+    .ph h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      position: relative;
+    }
+
+    .ph h1 .bi {
+      margin-inline-end: 8px;
+    }
+
+    .ph p {
+      color: var(--gold2);
+      position: relative;
+    }
+
+    /* blocks */
+    .about {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .photo {
+      aspect-ratio: 1;
+      border-radius: 30px;
+      background: var(--gold);
+      padding: 20px;
+      position: relative;
+      box-shadow: var(--sh);
+    }
+
+    .photo::after {
+      content: "";
+      position: absolute;
+      inset: 14px -14px -14px 14px;
+      border: 3px solid var(--gold);
+      border-radius: 30px;
+      z-index: -1;
+    }
+
+    .about h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(20, 74, 51, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .about p {
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chips span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gl);
+      color: var(--g-text);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .stats {
+      background: linear-gradient(135deg, var(--g2), var(--g));
+      color: #fff;
+      padding: 50px 0;
+    }
+
+    .stats .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stats b {
+      display: block;
+      font-size: 2.5rem;
+      color: var(--gold2);
+    }
+
+    .bg2 {
+      background-image: linear-gradient(to right, var(--bg2), var(--g2));
+      color: #f3f7f4;
+    }
+
+    .bg2 .title span,
+    .bg2 .tst blockquote .bi-quote,
+    .bg2 .tst cite {
+      color: var(--gold2);
+    }
+
+    .bg2 .title h2 {
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(160deg, var(--g), var(--g2));
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: var(--sh);
+      border-top: 4px solid var(--gold);
+      transition: 0.35s;
+      color: #f3f7f4;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.96rem;
+    }
+
+    .gal {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gal div {
+      aspect-ratio: 1;
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: var(--sh);
+      transition: 0.4s;
+    }
+
+    .gal div:nth-child(odd) {
+      background: var(--gold);
+    }
+
+    .gal div:nth-child(even) {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+    }
+
+    .gal div:hover {
+      transform: scale(1.07) rotate(-2deg);
+    }
+
+    .steps {
+      counter-reset: s;
+    }
+
+    .steps .card {
+      position: relative;
+      text-align: center;
+      padding-top: 36px;
+    }
+
+    .steps .ib {
+      margin-inline: auto;
+    }
+
+    .steps .card::before {
+      counter-increment: s;
+      content: counter(s);
+      position: absolute;
+      top: -20px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #2b2208;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+    }
+
+    .price {
+      text-align: center;
+    }
+
+    .price .ib {
+      margin-inline: auto;
+    }
+
+    .price.hot {
+      background: linear-gradient(160deg, var(--g), var(--g2));
+      transform: scale(1.04);
+    }
+
+    .price.hot h3,
+    .price.hot li {
+      color: #fff;
+    }
+
+    .price .n {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold2);
+    }
+
+    .price ul {
+      list-style: none;
+      margin: 14px 0 20px;
+      text-align: right;
+    }
+
+    .price li {
+      padding: 5px 0;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .price li::before {
+      content: "✓ ";
+      color: var(--gold2);
+      font-weight: 800;
+    }
+
+    .tst {
+      position: relative;
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+      min-height: 170px;
+    }
+
+    .tst blockquote {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: 0.7s;
+      transform: translateX(30px);
+      font-size: 1.15rem;
+    }
+
+    .tst blockquote .bi-quote {
+      display: block;
+      color: var(--gold-text);
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .tst blockquote.on {
+      opacity: 1;
+      transform: none;
+    }
+
+    .tst cite {
+      display: block;
+      margin-top: 12px;
+      color: var(--gold-text);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .book h2 {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(20, 74, 51, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .book p {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .info {
+      margin-top: 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .info>div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f3f7f4;
+    }
+
+    .info .bi {
+      color: var(--gold2);
+      flex: 0 0 auto;
+    }
+
+    form {
+      background: linear-gradient(160deg, var(--g), var(--g2));
+      padding: 28px;
+      border-radius: 22px;
+      box-shadow: var(--sh);
+      display: grid;
+      gap: 12px;
+      border-top: 4px solid var(--gold);
+    }
+
+    .field-icon {
+      position: relative;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .field-icon>.bi {
+      position: absolute;
+      inset-inline-start: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold2);
+      pointer-events: none;
+    }
+
+    .field-icon input,
+    .field-icon select,
+    .field-icon textarea {
+      padding-inline-start: 42px;
+    }
+
+    .date-input {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      min-height: 48px;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      font-size: 16px;
+      color: var(--tx);
+      direction: ltr;
+      text-align: left;
+    }
+
+    .date-input::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      filter: invert(31%) sepia(18%) saturate(1450%) hue-rotate(101deg) brightness(92%) contrast(91%);
+    }
+
+    .field-icon.date-field>.bi {
+      display: none;
+    }
+
+    .field-icon.date-field>.date-input {
+      padding: 10px 12px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--gl);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      background-image: linear-gradient(to right, var(--bg2), var(--g2));
+      color: var(--tx);
+    }
+
+    input:not(.cc-in),
+    select:not(.cc-in),
+    textarea:not(.cc-in) {
+      color: #f3f7f4;
+    }
+
+    #f select {
+      color: #f3f7f4;
+    }
+
+    #f select option {
+      color: #23322b;
+    }
+
+    #f select option:checked {
+      color: #fff;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.82);
+      opacity: 1;
+    }
+
+    .cc-in::placeholder {
+      color: #5c6e65;
+    }
+
+    input.date-input:not(.cc-in) {
+      color: var(--tx);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 0;
+      border-color: var(--gold);
+    }
+
+    .was-validated input:invalid,
+    .was-validated select:invalid,
+    .was-validated textarea:invalid {
+      border-color: #c0392b;
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+    }
+
+    .validation-hint {
+      margin: -6px 4px 0;
+      color: var(--mut);
+      font-size: 0.82rem;
+    }
+
+    details {
+      background: linear-gradient(160deg, var(--g), var(--g2));
+      border-radius: 14px;
+      box-shadow: var(--sh);
+      margin-bottom: 12px;
+      padding: 14px 20px;
+    }
+
+    summary {
+      font-weight: 700;
+      color: var(--g-text);
+      cursor: pointer;
+    }
+
+    details p {
+      color: var(--mut);
+      margin-top: 8px;
+    }
+
+    details summary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    details summary::after {
+      content: "\F282";
+      font-family: "bootstrap-icons";
+      color: var(--gold-text);
+      margin-inline-start: auto;
+      transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    footer {
+      background: var(--g2);
+      color: #cfe0d6;
+      text-align: center;
+      padding: 28px 0;
+    }
+
+    footer b {
+      color: var(--gold2);
+    }
+
+    .footer-credit {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: fit-content;
+      max-width: 100%;
+      margin: 14px auto 0;
+      padding: 9px 20px;
+      border: 1px solid rgba(228, 199, 122, 0.28);
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      color: #e8f3ec;
+      font-size: 0.92rem;
+      box-shadow: 0 0 0 rgba(228, 199, 122, 0);
+      animation: creditGlow 3.5s ease-in-out infinite;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .footer-credit::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: -60%;
+      bottom: -60%;
+      right: -45%;
+      width: 35%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+      transform: skewX(-24deg);
+      animation: creditSweep 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .footer-credit:hover {
+      transform: translateY(-3px);
+      border-color: rgba(228, 199, 122, 0.7);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 18px rgba(228, 199, 122, 0.18);
+    }
+
+    .footer-credit>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-credit .bi {
+      color: var(--gold2);
+      font-size: 1.05rem;
+      animation: creditCode 2.8s ease-in-out infinite;
+    }
+
+    .footer-credit strong {
+      color: var(--gold2);
+      background: linear-gradient(90deg, var(--gold2), #fff, var(--gold2));
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: creditShine 2.8s ease-in-out infinite;
+    }
+
+    @keyframes creditShine {
+
+      0%,
+      100% {
+        background-position: 0% center;
       }
-      [hidden] {
-        display: none !important;
+
+      50% {
+        background-position: 200% center;
       }
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
+    }
+
+    @keyframes creditCode {
+
+      0%,
+      100% {
+        transform: rotate(0) scale(1);
       }
-      .container {
-        width: min(1150px, 92%);
-        margin: auto;
+
+      50% {
+        transform: rotate(-8deg) scale(1.12);
       }
-      section {
-        padding: 70px 0;
+    }
+
+    @keyframes creditSweep {
+
+      0%,
+      15% {
+        right: -45%;
       }
-      .title {
-        text-align: center;
-        margin-bottom: 42px;
+
+      55%,
+      100% {
+        right: 115%;
       }
-      .title span {
-        color: var(--gold);
-        font-weight: 700;
+    }
+
+    @keyframes creditGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 rgba(228, 199, 122, 0);
       }
-      .title h2 {
-        font-size: 2rem;
-        color: var(--g);
-        font-weight: 800;
+
+      50% {
+        box-shadow: 0 0 18px rgba(228, 199, 122, 0.14);
       }
-      .title > i {
+    }
+
+    .fwa {
+      position: fixed;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      left: 20px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      z-index: 60;
+      animation: pulse 2s infinite;
+    }
+
+    .rv {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 0.8s,
+        transform 0.8s;
+    }
+
+    .rv.l {
+      transform: translateX(60px);
+    }
+
+    .rv.r {
+      transform: translateX(-60px);
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .pg {
+      animation: fade 0.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+    }
+
+    @keyframes up {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes float {
+      50% {
+        transform: translateY(-16px);
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+
+      70% {
+        box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    @media (max-width: 860px) {
+      nav::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        background: rgba(8, 18, 14, 0.62);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      nav.menu-open::before {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .burger {
         display: block;
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, var(--gold), var(--g));
-        margin: 10px auto 0;
-        border-radius: 4px;
+        z-index: 70;
       }
-      .title span .bi {
-        display: inline;
-        width: auto;
-        height: auto;
-        margin-inline-end: 6px;
-        background: none;
-        border-radius: 0;
+
+      nav.menu-open .burger {
+        display: none;
       }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        min-height: 48px;
-        padding: 11px 24px;
-        border-radius: 50px;
-        font-weight: 700;
-        border: 0;
-        cursor: pointer;
-        font-family: inherit;
-        font-size: 0.95rem;
-        line-height: 1.4;
-        text-align: center;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-      }
-      nav .btn,
-      .slider .btn {
-        min-height: 0;
-        font-size: 10px;
-        line-height: normal;
-      }
-      .btn:focus-visible,
-      .cc-g:focus-visible,
-      .cc-btn:focus-visible,
-      .cm-x:focus-visible,
-      .cm-cta:focus-visible,
-      .cm-redo:focus-visible {
-        outline: 3px solid var(--gold2);
-        outline-offset: 3px;
-      }
-      .btn-gold {
-        background: linear-gradient(135deg, var(--gold), var(--gold2));
-        color: #2b2208;
-        box-shadow: 0 8px 20px rgba(201, 162, 75, 0.4);
-      }
-      .btn-gold:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 24px rgba(201, 162, 75, 0.48);
-      }
-      .btn-line {
-        border: 2px solid #fff;
-        color: #fff;
-      }
-      .btn-line:hover {
-        background: #fff;
-        color: var(--g);
-      }
-      .btn-wa {
-        background: #25d366;
-        color: #fff;
-      }
-      .btn-wa:hover {
-        background: #1fb95a;
-        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
-        transform: translateY(-2px);
-      }
-      nav {
+
+      .links {
         position: fixed;
         top: 0;
-        inset-inline: 0;
-        z-index: 50;
-        padding: 14px 0;
-        padding-top: calc(14px + env(safe-area-inset-top, 0px));
-        transition: 0.35s;
+        right: -100%;
+        z-index: 2;
+        width: 75%;
+        height: 100%;
+        background: var(--g2);
+        flex-direction: column;
+        justify-content: center;
+        gap: 24px;
+        transition: 0.4s;
       }
-      nav.sc {
-        background: var(--bg);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        padding-block: 8px;
-        padding-top: calc(8px + env(safe-area-inset-top, 0px));
+
+      .links.o {
+        right: 0;
       }
-      nav .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .logo {
-        font-weight: 800;
-        font-size: 1.2rem;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .logo b {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: var(--gold);
+
+      .menu-close {
+        position: absolute;
+        top: 16px;
+        left: 20px;
         display: grid;
         place-items: center;
-      }
-      nav.sc .logo {
-        color: var(--g);
-      }
-      .links {
-        display: flex;
-        gap: 20px;
-        list-style: none;
-        align-items: center;
-      }
-      .links a {
+        width: 42px;
+        height: 42px;
+        border: 0;
+        background: transparent;
         color: #fff;
-        font-weight: 600;
-        position: relative;
-        padding: 4px 0;
+        font-size: 1.8rem;
+        cursor: pointer;
       }
+
+      .links a,
       nav.sc .links a {
-        color: var(--tx);
+        color: #fff;
+        font-size: 1.15rem;
       }
-      .links a:not(.btn)::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 0;
-        height: 2px;
-        background: var(--gold);
-        transition: 0.3s;
-      }
-      .links a:hover::after,
-      .links a.act::after {
-        width: 100%;
-      }
+
       .links a.btn,
       nav.sc .links a.btn {
         color: #2b2208;
       }
-      .burger {
-        display: none;
-        background: none;
-        border: 0;
-        color: #fff;
-        font-size: 1.8rem;
-        cursor: pointer;
-      }
-      nav.sc .burger {
-        color: var(--g);
-      }
-      /* illustrations */
-      .im {
-        display: block;
-        width: 100%;
-        height: 100%;
-      }
-      .ib {
-        width: 72px;
-        height: 72px;
-        border-radius: 20px;
-        background: linear-gradient(135deg, var(--g), var(--g2));
-        padding: 8px;
-        margin-bottom: 14px;
-        transition: 0.35s;
-      }
-      .ib .bi,
-      .photo > .bi {
-        display: grid;
-        place-items: center;
-        width: 100%;
-        height: 100%;
-        color: #fff;
-        font-size: 2.5rem;
-      }
-      .photo > .bi {
-        font-size: 5rem;
-      }
-      .card:hover .ib {
-        transform: rotate(-8deg) scale(1.08);
-      }
-      /* slider */
-      .slider {
-        position: relative;
-        height: 100vh;
-        min-height: 600px;
-        overflow: hidden;
-        background: var(--g2);
-      }
-      .slide {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        opacity: 0;
-        visibility: hidden;
-        transition:
-          opacity 1s,
-          visibility 1s;
-        color: #fff;
-      }
-      .slide.on {
-        opacity: 1;
-        visibility: visible;
-      }
-      .slide:nth-child(1) {
-        background: linear-gradient(135deg, #144a33, #1f6b4a 60%, #2d8a60);
-      }
-      .slide:nth-child(2) {
-        background: linear-gradient(135deg, #1f6b4a, #144a33 55%, #0e3524);
-      }
-      .slide:nth-child(3) {
-        background: linear-gradient(135deg, #2d8a60, #1f6b4a 50%, #144a33);
-      }
-      .slide::before {
-        content: "";
-        position: absolute;
-        width: 520px;
-        height: 520px;
-        border-radius: 50%;
-        border: 2px solid rgba(228, 199, 122, 0.35);
-        top: -120px;
-        left: -120px;
-        animation: spin 30s linear infinite;
-      }
-      .slide .container {
-        position: relative;
-        z-index: 2;
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 30px;
-        align-items: center;
-      }
-      .slide small {
-        color: var(--gold2);
-        font-weight: 700;
-      }
-      .slide h1 {
-        font-size: clamp(2rem, 5vw, 3.3rem);
-        line-height: 1.3;
-        margin: 10px 0;
-        font-weight: 800;
-      }
-      .slide p {
-        max-width: 540px;
-        opacity: 0.92;
-        margin-bottom: 26px;
-        font-size: 1.1rem;
-      }
-      .slide .art {
-        width: min(430px, 100%);
-        aspect-ratio: 1;
-        margin: auto;
-        animation: float 5s ease-in-out infinite;
-        filter: drop-shadow(0 25px 30px rgba(0, 0, 0, 0.35));
-      }
-      .slide .tx > * {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      .slide.on .tx > * {
-        animation: up 0.8s forwards;
-      }
-      .slide.on .tx > *:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .slide.on .tx > *:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-      .slide.on .tx > *:nth-child(4) {
-        animation-delay: 0.6s;
-      }
-      .arr {
-        position: absolute;
-        top: 50%;
-        z-index: 5;
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        border: 0;
-        background: rgba(255, 255, 255, 0.18);
-        color: #fff;
-        font-size: 1.4rem;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      .arr:hover {
-        background: var(--gold);
-      }
-      .arr.p {
-        right: 18px;
-      }
-      .arr.n {
-        left: 18px;
-      }
-      .dots {
-        position: absolute;
-        bottom: 28px;
-        inset-inline: 0;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        z-index: 5;
-      }
-      .dots button {
-        width: 12px;
-        height: 12px;
-        border-radius: 12px;
-        border: 0;
-        background: rgba(255, 255, 255, 0.5);
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      .dots button.on {
-        width: 34px;
-        background: var(--gold);
-      }
-      .bar {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 4px;
-        background: var(--gold);
-        width: 0;
-        z-index: 5;
-      }
-      /* inner page banner */
-      .ph {
-        background: linear-gradient(135deg, var(--g2), var(--g));
-        color: #fff;
-        text-align: center;
-        padding: 130px 0 60px;
-        position: relative;
-        overflow: hidden;
-      }
-      .ph::after {
-        content: "";
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        background: rgba(201, 162, 75, 0.14);
-        bottom: -120px;
-        left: -60px;
-      }
-      .ph h1 {
-        font-size: 2.4rem;
-        font-weight: 800;
-        position: relative;
-      }
-      .ph h1 .bi {
-        margin-inline-end: 8px;
-      }
-      .ph p {
-        color: var(--gold2);
-        position: relative;
-      }
-      /* blocks */
-      .about {
-        display: grid;
-        grid-template-columns: 0.9fr 1.1fr;
-        gap: 50px;
-        align-items: center;
-      }
-      .photo {
-        aspect-ratio: 1;
-        border-radius: 30px;
-        background: linear-gradient(135deg, var(--g), var(--g2));
-        padding: 20px;
-        position: relative;
-        box-shadow: var(--sh);
-      }
-      .photo::after {
-        content: "";
-        position: absolute;
-        inset: 14px -14px -14px 14px;
-        border: 3px solid var(--gold);
-        border-radius: 30px;
-        z-index: -1;
-      }
-      .about h3 {
-        font-size: 1.5rem;
-        color: var(--g);
-        margin-bottom: 8px;
-      }
-      .about p {
-        color: var(--mut);
-        margin-bottom: 14px;
-      }
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      .chips span {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: var(--gl);
-        color: var(--g);
-        padding: 6px 16px;
-        border-radius: 30px;
-        font-weight: 600;
-        font-size: 0.92rem;
-      }
-      .stats {
-        background: linear-gradient(135deg, var(--g2), var(--g));
-        color: #fff;
-        padding: 50px 0;
-      }
-      .stats .container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        text-align: center;
-      }
-      .stats b {
-        display: block;
-        font-size: 2.5rem;
-        color: var(--gold2);
-      }
-      .bg2 {
-        background: var(--bg2);
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 24px;
-      }
-      .card {
-        background: var(--card);
-        border-radius: 20px;
-        padding: 28px 24px;
-        box-shadow: var(--sh);
-        border-top: 4px solid var(--gold);
-        transition: 0.35s;
-      }
-      .card:hover {
-        transform: translateY(-10px);
-      }
-      .card h3 {
-        color: var(--g);
-        margin-bottom: 6px;
-      }
-      .card p {
-        color: var(--mut);
-        font-size: 0.96rem;
-      }
-      .gal {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-      }
-      .gal div {
-        aspect-ratio: 1;
-        border-radius: 22px;
-        padding: 14px;
-        box-shadow: var(--sh);
-        transition: 0.4s;
-      }
-      .gal div:nth-child(odd) {
-        background: linear-gradient(135deg, var(--g), var(--g2));
-      }
-      .gal div:nth-child(even) {
-        background: linear-gradient(135deg, var(--gold), var(--gold2));
-      }
-      .gal div:hover {
-        transform: scale(1.07) rotate(-2deg);
-      }
-      .steps {
-        counter-reset: s;
-      }
-      .steps .card {
-        position: relative;
-        text-align: center;
-        padding-top: 36px;
-      }
-      .steps .ib {
-        margin-inline: auto;
-      }
-      .steps .card::before {
-        counter-increment: s;
-        content: counter(s);
-        position: absolute;
-        top: -20px;
-        right: 50%;
-        transform: translateX(50%);
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        background: var(--gold);
-        color: #2b2208;
-        font-weight: 800;
-        display: grid;
-        place-items: center;
-      }
-      .price {
-        text-align: center;
-      }
-      .price .ib {
-        margin-inline: auto;
-      }
-      .price.hot {
-        background: linear-gradient(160deg, var(--g), var(--g2));
-        transform: scale(1.04);
-      }
-      .price.hot h3,
-      .price.hot li {
-        color: #fff;
-      }
-      .price .n {
-        font-size: 2.2rem;
-        font-weight: 800;
-        color: var(--gold);
-      }
-      .price ul {
-        list-style: none;
-        margin: 14px 0 20px;
-        text-align: right;
-      }
-      .price li {
-        padding: 5px 0;
-        color: var(--mut);
-      }
-      .price li::before {
-        content: "✓ ";
-        color: var(--gold);
-        font-weight: 800;
-      }
-      .tst {
-        position: relative;
-        max-width: 700px;
-        margin: auto;
-        text-align: center;
-        min-height: 170px;
-      }
-      .tst blockquote {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        transition: 0.7s;
-        transform: translateX(30px);
-        font-size: 1.15rem;
-      }
-      .tst blockquote .bi-quote {
-        display: block;
-        color: var(--gold);
-        font-size: 2rem;
-        margin-bottom: 8px;
-      }
-      .tst blockquote.on {
-        opacity: 1;
-        transform: none;
-      }
-      .tst cite {
-        display: block;
-        margin-top: 12px;
-        color: var(--gold);
-        font-weight: 700;
-        font-style: normal;
-      }
+
+      .slide .container,
+      .about,
       .wrap {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: center;
+        grid-template-columns: 1fr;
       }
-      .book h2 {
-        font-size: 2rem;
-        color: var(--g);
-        margin-bottom: 10px;
+
+      .slide .art {
+        width: 220px;
       }
-      .book p {
-        color: var(--mut);
-      }
-      .info {
-        margin-top: 16px;
-        display: grid;
-        gap: 8px;
-      }
-      .info > div {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .info .bi {
-        color: var(--gold);
-        flex: 0 0 auto;
-      }
-      form {
-        background: var(--card);
-        padding: 28px;
-        border-radius: 22px;
-        box-shadow: var(--sh);
-        display: grid;
-        gap: 12px;
-        border-top: 4px solid var(--gold);
-      }
-      .field-icon {
-        position: relative;
-        width: 100%;
-        min-width: 0;
-      }
-      .field-icon > .bi {
-        position: absolute;
-        inset-inline-start: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--g);
-        pointer-events: none;
-      }
-      .field-icon input,
-      .field-icon select,
-      .field-icon textarea {
-        padding-inline-start: 42px;
-      }
-      .date-input {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        min-height: 48px;
-        box-sizing: border-box;
-        padding: 10px 12px;
-        font-size: 16px;
-        direction: ltr;
-        text-align: left;
-      }
-      .date-input::-webkit-calendar-picker-indicator {
-        cursor: pointer;
-        filter: invert(31%) sepia(18%) saturate(1450%) hue-rotate(101deg)
-          brightness(92%) contrast(91%);
-      }
-      .field-icon.date-field > .bi {
+
+      .arr {
         display: none;
       }
-      .field-icon.date-field > .date-input {
-        padding: 10px 12px;
+
+      .slide {
+        align-items: flex-start;
+        padding-top: 110px;
       }
-      input,
-      select,
-      textarea {
-        width: 100%;
-        padding: 12px 14px;
-        border: 2px solid var(--gl);
-        border-radius: 12px;
-        font-family: inherit;
-        font-size: 1rem;
-        background: var(--bg);
-        color: var(--tx);
+
+      .stats .container,
+      .gal {
+        grid-template-columns: 1fr 1fr;
       }
-      input:focus,
-      select:focus,
-      textarea:focus {
-        outline: 0;
-        border-color: var(--gold);
+
+      .price.hot {
+        transform: none;
       }
-      .was-validated input:invalid,
-      .was-validated select:invalid,
-      .was-validated textarea:invalid {
-        border-color: #c0392b;
-        box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
       }
-      .validation-hint {
-        margin: -6px 4px 0;
-        color: var(--mut);
-        font-size: 0.82rem;
-      }
-      details {
-        background: var(--card);
-        border-radius: 14px;
-        box-shadow: var(--sh);
-        margin-bottom: 12px;
-        padding: 14px 20px;
-      }
-      summary {
-        font-weight: 700;
-        color: var(--g);
-        cursor: pointer;
-      }
-      details p {
-        color: var(--mut);
-        margin-top: 8px;
-      }
-      details summary {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      details summary::after {
-        content: "\F282";
-        font-family: "bootstrap-icons";
-        color: var(--gold);
-        margin-inline-start: auto;
-        transition: transform 0.2s;
-      }
-      details[open] summary::after {
-        transform: rotate(180deg);
-      }
-      footer {
-        background: var(--g2);
-        color: #cfe0d6;
-        text-align: center;
-        padding: 28px 0;
-      }
-      footer b {
-        color: var(--gold2);
-      }
-      .footer-credit {
-        position: relative;
-        isolation: isolate;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: fit-content;
-        max-width: 100%;
-        margin: 14px auto 0;
-        padding: 9px 20px;
-        border: 1px solid rgba(228, 199, 122, 0.28);
-        border-radius: 999px;
-        overflow: hidden;
-        background: rgba(255, 255, 255, 0.05);
-        color: #e8f3ec;
-        font-size: 0.92rem;
-        box-shadow: 0 0 0 rgba(228, 199, 122, 0);
-        animation: creditGlow 3.5s ease-in-out infinite;
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .footer-credit::before {
-        content: "";
-        position: absolute;
-        z-index: 0;
-        top: -60%;
-        bottom: -60%;
-        right: -45%;
-        width: 35%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
-        transform: skewX(-24deg);
-        animation: creditSweep 4s ease-in-out infinite;
-        pointer-events: none;
-      }
-      .footer-credit:hover {
-        transform: translateY(-3px);
-        border-color: rgba(228, 199, 122, 0.7);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 18px rgba(228, 199, 122, 0.18);
-      }
-      .footer-credit > * {
-        position: relative;
-        z-index: 1;
-      }
-      .footer-credit .bi {
-        color: var(--gold2);
-        font-size: 1.05rem;
-        animation: creditCode 2.8s ease-in-out infinite;
-      }
-      .footer-credit strong {
-        color: var(--gold2);
-        background: linear-gradient(90deg, var(--gold2), #fff, var(--gold2));
-        background-size: 200% auto;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: creditShine 2.8s ease-in-out infinite;
-      }
-      @keyframes creditShine {
-        0%,
-        100% {
-          background-position: 0% center;
-        }
-        50% {
-          background-position: 200% center;
-        }
-      }
-      @keyframes creditCode {
-        0%,
-        100% {
-          transform: rotate(0) scale(1);
-        }
-        50% {
-          transform: rotate(-8deg) scale(1.12);
-        }
-      }
-      @keyframes creditSweep {
-        0%,
-        15% {
-          right: -45%;
-        }
-        55%,
-        100% {
-          right: 115%;
-        }
-      }
-      @keyframes creditGlow {
-        0%,
-        100% {
-          box-shadow: 0 0 0 rgba(228, 199, 122, 0);
-        }
-        50% {
-          box-shadow: 0 0 18px rgba(228, 199, 122, 0.14);
-        }
-      }
-      .fwa {
-        position: fixed;
-        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-        left: 20px;
-        width: 58px;
-        height: 58px;
-        border-radius: 50%;
-        background: #25d366;
-        color: #fff;
-        display: grid;
-        place-items: center;
-        font-size: 1.8rem;
-        z-index: 60;
-        animation: pulse 2s infinite;
-      }
+
       .rv {
-        opacity: 0;
-        transform: translateY(40px);
-        transition:
-          opacity 0.8s,
-          transform 0.8s;
-      }
-      .rv.l {
-        transform: translateX(60px);
-      }
-      .rv.r {
-        transform: translateX(-60px);
-      }
-      .rv.in {
         opacity: 1;
         transform: none;
       }
-      .pg {
-        animation: fade 0.5s;
-      }
-      @keyframes fade {
-        from {
-          opacity: 0;
-        }
-      }
-      @keyframes up {
-        to {
-          opacity: 1;
-          transform: none;
-        }
-      }
-      @keyframes float {
-        50% {
-          transform: translateY(-16px);
-        }
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-        }
-        70% {
-          box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-        }
-      }
-      @media (max-width: 860px) {
-        .burger {
-          display: block;
-          z-index: 70;
-        }
-        .links {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 75%;
-          height: 100%;
-          background: var(--g2);
-          flex-direction: column;
-          justify-content: center;
-          gap: 24px;
-          transition: 0.4s;
-        }
-        .links.o {
-          right: 0;
-        }
-        .links a,
-        nav.sc .links a {
-          color: #fff;
-          font-size: 1.15rem;
-        }
-        .links a.btn,
-        nav.sc .links a.btn {
-          color: #2b2208;
-        }
-        .slide .container,
-        .about,
-        .wrap {
-          grid-template-columns: 1fr;
-        }
-        .slide .art {
-          width: 220px;
-        }
-        .arr {
-          display: none;
-        }
-        .slide {
-          align-items: flex-start;
-          padding-top: 110px;
-        }
-        .stats .container,
-        .gal {
-          grid-template-columns: 1fr 1fr;
-        }
-        .price.hot {
-          transform: none;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          animation: none !important;
-          transition: none !important;
-        }
-        .rv {
-          opacity: 1;
-          transform: none;
-        }
-      }
-      .nutrition-icon {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 15px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
-}
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 10px;
-}
+    }
 
-.logo img {
-   width: 190px;
-  height: 65px;
-  object-fit: contain;
-  display: block;
-  transition: 0.3s ease;
-  background-color: #f5deb3a6;
-  border: 1px solid black;
-  border-radius: 36px;
-}
-    
+    .nutrition-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 15px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+    }
 
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      gap: 10px;
+    }
 
-.logo:hover img {
-    transform: scale(1.04);
-}
-
-@media (max-width: 576px) {
     .logo img {
+      width: 190px;
+      height: 65px;
+      object-fit: contain;
+      display: block;
+      transition: 0.3s ease;
+      background-color: #f5deb3a6;
+      border: 1px solid black;
+      border-radius: 36px;
+    }
+
+
+
+    .logo:hover img {
+      transform: scale(1.04);
+    }
+
+    @media (max-width: 576px) {
+      .logo img {
         width: 145px;
         height: 55px;
+      }
     }
-}
-.gal .rv {
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.gal .im {
-    width: 100%;
-    height: 100%;
-    object-fit: unset;
-    display: block;
-}
-/* ============ حاسبة السعرات ============ */
-.cc-sec{padding:70px 0;background-image: linear-gradient(to right, var(--bg2), var(--g2));}
-.cc-wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;direction:rtl}
-.cc-intro{flex:1 1 30%;text-align:right}
-.cc-formcol{flex:0 0 440px;max-width:100%}
-.cc-imgcol{flex:1 1 25%;text-align:center}
+    .gal .rv {
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.cc-kicker{display:block;color:#1a9e6a;font-size:1.9rem;font-weight:700;margin-bottom:14px}
-.cc-intro h2{font-size:2.2rem;font-weight:800;color:#fbfbfb;line-height:1.5;margin:0 0 16px}
-.cc-intro p{color:#9097a5;font-size:1.15rem;line-height:1.9;margin:0}
+    .gal .im {
+      width: 100%;
+      height: 100%;
+      object-fit: unset;
+      display: block;
+    }
 
-.cc-card{background:#fff;border-radius:28px;padding:26px 28px;box-shadow:0 10px 40px rgba(0,0,0,.07)}
-.cc-hi{color:#1a9e6a;font-weight:800;font-size:2rem;margin:0 0 4px;text-align:right}
-.cc-sub{font-weight:800;font-size:1.15rem;color:#111827;margin:0 0 20px;text-align:right}
+    /* ============ حاسبة السعرات ============ */
+    .cc-sec {
+      padding: 70px 0;
+      background-image: linear-gradient(to right, var(--bg2), var(--g2));
+    }
 
-.cc-field{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.cc-field>label{flex:0 0 105px;font-size:.85rem;font-weight:600;color:#10a936;margin:0}
-.cc-in{flex:1 1 0%;width:100%;min-width:0;max-width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:12px;padding:10px 14px;font-size:.88rem;font-family:inherit;background:#fff;color:#374151;outline:none;transition:.2s}
-.cc-in[type="date"]{min-height:44px;width: 100%!important;padding:10px 12px;font-size:16px;direction:ltr;text-align:left}
-.cc-in:focus{border-color:#2ba673;box-shadow:0 0 0 3px rgba(43,166,115,.15)}
-select.cc-in{appearance:none;-webkit-appearance:none;cursor:pointer;
-  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat left 14px center}
-.cc-two{display:flex;gap:8px;flex:1}
+    .cc-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      direction: rtl
+    }
 
-.cc-gender{display:flex;gap:10px;flex:1}
-.cc-g{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;flex:1;border:1px solid #e5e7eb;background:#f9fafb;color:#4b5563;border-radius:12px;padding:10px 14px;font-size:.95rem;font-weight:600;font-family:inherit;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s,box-shadow .2s}
-.cc-g:hover{background:#eef5f1;border-color:#b9ddc9}
-.cc-g.active{background:#e6f6ee;border-color:#2ba673;color:#1a9e6a;font-weight:700}
-.cc-g.active:focus-visible{box-shadow:0 0 0 3px rgba(43,166,115,.16)}
+    .cc-intro {
+      flex: 1 1 30%;
+      text-align: right
+    }
 
-.cc-err{background:#fdecec;color:#c0392b;border-radius:10px;padding:8px 12px;font-size:.85rem;margin-bottom:10px;text-align:center}
-.cc-err[hidden]{display:none}
-.cc-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;border:0;background:#3a9168;color:#fff;font-weight:700;font-size:1rem;font-family:inherit;padding:12px 18px;border-radius:50px;cursor:pointer;transition:transform .2s,background-color .2s,box-shadow .2s;margin-top:6px}
-.cc-btn:hover{background:#2b7a54;box-shadow:0 8px 18px rgba(43,122,84,.22);transform:translateY(-2px)}
+    .cc-formcol {
+      flex: 0 0 440px;
+      max-width: 100%
+    }
 
-.cc-man{max-height:520px;max-width:100%;object-fit:contain;transition:opacity .25s ease,transform .25s ease}
-.cc-man.swap{opacity:0;transform:scale(.96)}
+    .cc-imgcol {
+      flex: 1 1 25%;
+      text-align: center
+    }
 
-@media(max-width:991px){
-  .cc-wrap{flex-direction:column;align-items:stretch}
-  .cc-intro{text-align:center}
-  .cc-formcol{flex:none;width:100%;max-width:460px;margin:0 auto}
-  .cc-man{max-height:320px}
-}
-@media(max-width:480px){
-  .cc-card{padding:22px 18px}
-  .cc-field{flex-direction:column;align-items:stretch;gap:6px}
-  .cc-field>label{flex:none}
-}
-.cc-history{margin-top:22px;padding:18px 0 0;border-top:1px solid #e5eee8}
-.cc-history-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
-.cc-history-head h4{display:flex;align-items:center;gap:8px;margin:0;color:#144a33;font-size:1rem}
-.cc-history-head h4 i{color:#2ba673}
-.cc-history-actions{display:flex;align-items:center;gap:6px}
-.cc-history-toggle,.cc-history-clear{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;font:inherit;font-size:.82rem;cursor:pointer;padding:7px 9px;border-radius:8px}
-.cc-history-toggle{color:#1f6b4a}
-.cc-history-toggle:hover{background:#eaf5ef}
-.cc-history-clear{color:#9b3c36}
-.cc-history-clear:hover{background:#fff0ee}
-.cc-history-toggle:focus-visible,.cc-history-clear:focus-visible{outline:2px solid #2ba673;outline-offset:2px}
-.cc-history-status{margin:0 0 8px;color:#a33b32;font-size:.84rem}
-.cc-history-list{display:grid;gap:10px;list-style:none;padding:0;margin:0}
-.cc-history-empty{margin:0;padding:14px;text-align:center;background:#f7faf8;border-radius:12px;color:#66756c;font-size:.88rem}
-.cc-history-item{padding:12px 14px;border:1px solid #e7eee9;border-radius:14px;background:#fbfdfb}
-.cc-history-item-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.cc-history-cal{color:#1f6b4a;font-size:1.05rem;font-weight:800}
-.cc-history-date{color:#69776f;font-size:.78rem}
-.cc-history-meta{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:5px;color:#647269;font-size:.8rem}
+    .cc-kicker {
+      display: block;
+      color: var(--gold2);
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 14px
+    }
 
-/* ============ Pop-up النتيجة ============ */
-.cm{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .3s ease;direction:rtl}
-.cm.show{display:flex}
-.cm.open{opacity:1}
-.cm-dialog{width:100%;max-width:680px;max-height:92vh;overflow-y:auto;background:#fafbfc;border-radius:28px;box-shadow:0 30px 80px rgba(0,0,0,.35);transform:translateY(30px) scale(.97);transition:transform .35s cubic-bezier(.22,.8,.3,1)}
-.cm.open .cm-dialog{transform:none}
+    .cc-intro h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fbfbfb;
+      line-height: 1.5;
+      margin: 0 0 16px
+    }
 
-.cm-head{position:relative;text-align:center;color:#fff;padding:34px 24px 30px;
-  background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.18),transparent 45%),linear-gradient(135deg,#17805a 0%,#2ba673 60%,#43c28a 100%)}
-.cm-x{position:absolute;top:16px;left:16px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;font-size:.95rem;cursor:pointer;transition:background-color .2s,transform .2s}
-.cm-x:hover{background:rgba(255,255,255,.35)}
-.cm-badge{display:inline-block;background:rgba(255,255,255,.18);padding:6px 16px;border-radius:50px;font-size:.82rem;font-weight:600;margin-bottom:12px}
-.cm-head h3{font-weight:800;font-size:1.5rem;margin:0 0 4px;color:#fff}
-.cm-goal{margin:0 0 18px;opacity:.9;font-size:.95rem}
+    .cc-intro p {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.15rem;
+      line-height: 1.9;
+      margin: 0
+    }
 
-.cm-gauge{position:relative;width:210px;height:210px;margin:0 auto}
-.cm-gauge svg{width:100%;height:100%;transform:rotate(135deg)}
-.cm-gauge circle{fill:none;stroke-width:14;stroke-linecap:round}
-.cm-track{stroke:rgba(255,255,255,.22);stroke-dasharray:377 503}
-.cm-prog{stroke:#f7d774;stroke-dasharray:0 503;transition:stroke-dasharray 1.4s cubic-bezier(.22,.8,.3,1);filter:drop-shadow(0 0 6px rgba(247,215,116,.7))}
-.cm-gauge-tx{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.cm-gauge-tx strong{font-size:2.8rem;font-weight:800;line-height:1}
-.cm-gauge-tx small{font-size:.8rem;opacity:.9;margin-top:6px}
+    .cc-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 26px 28px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, .07)
+    }
 
-.cm-body{padding:26px 24px 8px}
-.cm-mb{margin-bottom:24px}
-.cm-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.cm-grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.cm-h{font-size:1rem;font-weight:800;color:#111827;margin:0 0 14px;display:flex;align-items:center;gap:8px}
-.cm-h i{color:#2ba673}
+    .cc-hi {
+      color: var(--g);
+      font-weight: 800;
+      font-size: 2rem;
+      margin: 0 0 4px;
+      text-align: right
+    }
 
-.cm-stat{background:#fff;border-radius:18px;padding:16px 8px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.05)}
-.cm-stat i{font-size:1.4rem;color:#2ba673;display:block;margin-bottom:6px}
-.cm-stat b{display:block;font-size:1.25rem;color:#111827;font-weight:800}
-.cm-stat span{display:block;font-size:.72rem;color:#6b7280;margin-top:2px;line-height:1.5}
+    .cc-sub {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #111827;
+      margin: 0 0 20px;
+      text-align: right
+    }
 
-.cm-mac{background:#fff;border-radius:18px;padding:16px 10px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.05)}
-.cm-ic{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 8px}
-.cm-mac b{display:block;font-size:.85rem;color:#374151}
-.cm-mac strong{display:block;font-size:1.3rem;color:#111827;font-weight:800;margin-top:2px}
-.cm-mac small{display:block;color:#6b7280;font-size:.75rem;margin-bottom:8px}
-.cm-bar{height:6px;border-radius:6px;background:#eef0f3;overflow:hidden}
-.cm-bar i{display:block;height:100%;width:0;border-radius:6px;transition:width 1.2s ease}
+    .cc-field {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px
+    }
 
-.cm-todo{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px 16px;font-size:.85rem;font-weight:600;color:#374151;box-shadow:0 4px 16px rgba(0,0,0,.05)}
-.cm-todo i{font-size:1.3rem;color:#2ba673}
+    .cc-field>label {
+      flex: 0 0 105px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #e8f3ec;
+      margin: 0
+    }
 
-.cm-note{background:#fff7e0;color:#8a6410;border-radius:14px;padding:12px 16px;font-size:.82rem;margin-top:16px;line-height:1.8}
-.cm-note[hidden]{display:none}
+    .cc-in {
+      flex: 1 1 0%;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: .88rem;
+      font-family: inherit;
+      background: #fff;
+      color: #374151;
+      outline: none;
+      transition: .2s
+    }
 
-.cm-foot{padding:18px 24px 24px;display:flex;flex-direction:column;gap:10px;align-items:center}
-.cm-cta{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;width:100%;box-sizing:border-box;text-align:center;text-decoration:none;background:linear-gradient(135deg,#d4a72c,#f0cb5b);color:#3b2d00;font-weight:800;padding:12px 18px;border-radius:50px;box-shadow:0 8px 22px rgba(212,167,44,.4);transition:transform .2s,box-shadow .2s}
-.cm-cta:hover{transform:translateY(-2px);box-shadow:0 11px 26px rgba(212,167,44,.48)}
-.cm-redo{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:8px 14px;background:none;border:0;border-radius:24px;color:#6b7280;font-size:.9rem;font-weight:600;font-family:inherit;cursor:pointer;transition:background-color .2s,color .2s}
-.cm-redo:hover{background:#eaf5ef;color:#2ba673}
+    .cc-in[type="date"] {
+      min-height: 44px;
+      width: 100% !important;
+      padding: 10px 12px;
+      font-size: 16px;
+      direction: ltr;
+      text-align: left
+    }
 
-body.cm-lock{overflow:hidden}
+    .cc-in:focus {
+      border-color: #2ba673;
+      box-shadow: 0 0 0 3px rgba(43, 166, 115, .15)
+    }
 
-@media(max-width:576px){
-  .cm-gauge{width:180px;height:180px}
-  .cm-gauge-tx strong{font-size:2.3rem}
-  .cm-stat b{font-size:1.05rem}
-  .cm-stat span{font-size:.66rem}
-  .cm-grid3{gap:8px}
-  .cm-mac b{font-size:.78rem}
-  .cm-mac strong{font-size:1.1rem}
-}
+    select.cc-in {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat left 14px center
+    }
 
-.booking {
-  padding: 10px 20px !important;
-}
-.about .photo {
-    overflow: hidden;
-    border-radius: 20px;
-}
+    .cc-two {
+      display: flex;
+      gap: 8px;
+      flex: 1
+    }
 
-.about .photo img.im {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-}
-.photo {
-    overflow: hidden;
-    border-radius: 20px;
-}
+    .cc-gender {
+      display: flex;
+      gap: 10px;
+      flex: 1
+    }
 
-.photo img.im {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-}
-    </style>
-  </head>
-  <body>
+    .cc-g {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 46px;
+      flex: 1;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      color: #4b5563;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: .95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background-color .2s, border-color .2s, color .2s, box-shadow .2s
+    }
 
-    <nav id="nav">
-      <div class="container">
-        <a href="#home" class="logo">
-    <img src="img/logo.png" alt="د. إيمان شامة">
-</a>
-        <button class="burger" id="bg" aria-label="القائمة"><i class="bi bi-list" aria-hidden="true"></i></button>
-        <ul class="links" id="lk">
-          <li><a href="#home"> الرئيسية</a></li>
-          <li><a href="#about"> عن الدكتورة</a></li>
-          <li><a href="#services"> الخدمات</a></li>
-          <li><a href="#how"> كيف نعمل</a></li>
-          <li><a href="#plans"> الباقات</a></li>
-          <li><a href="#faq"> أسئلة شائعة</a></li>
-          <li><a href="#book" class="btn btn-gold booking"> احجزي الآن</a></li>
-        </ul>
-      </div>
-    </nav>
+    .cc-g:hover {
+      background: #eef5f1;
+      border-color: #b9ddc9
+    }
 
-    <!-- ============ الرئيسية ============ -->
-    <main id="home" class="pg">
-  <header class="slider">
+    .cc-g.active {
+      background: #e6f6ee;
+      border-color: #2ba673;
+      color: var(--g);
+      font-weight: 700
+    }
 
-    <!-- Slide 1 -->
-    <div class="slide on">
-      <div class="slide-bg">
-        <img src="img/ttt.png" alt="تغذية الأسرة">
-      </div>
-      <div class="container">
-        <div class="tx">
-          <small>عيادة التغذية العلاجية</small>
-          <h1>صحتك تبدأ من طبقك… ونحن نرسم لك الطريق</h1>
-          <p>برامج غذائية مخصصة لك تماماً، بدون حرمان وبنتائج تدوم.</p>
-          <a href="#book" class="btn btn-gold"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي استشارتك</a>
+    .cc-g.active:focus-visible {
+      box-shadow: 0 0 0 3px rgba(43, 166, 115, .16)
+    }
+
+    .cc-err {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: .85rem;
+      margin-bottom: 10px;
+      text-align: center
+    }
+
+    .cc-err[hidden] {
+      display: none
+    }
+
+    .cc-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 50px;
+      border: 0;
+      background: #3a9168;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: inherit;
+      padding: 12px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform .2s, background-color .2s, box-shadow .2s;
+      margin-top: 6px
+    }
+
+    .cc-btn:hover {
+      background: #2b7a54;
+      box-shadow: 0 8px 18px rgba(43, 122, 84, .22);
+      transform: translateY(-2px)
+    }
+
+    .cc-man {
+      max-height: 520px;
+      max-width: 100%;
+      object-fit: contain;
+      transition: opacity .25s ease, transform .25s ease
+    }
+
+    .cc-man.swap {
+      opacity: 0;
+      transform: scale(.96)
+    }
+
+    @media(max-width:991px) {
+      .cc-wrap {
+        flex-direction: column;
+        align-items: stretch
+      }
+
+      .cc-intro {
+        text-align: center
+      }
+
+      .cc-formcol {
+        flex: none;
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto
+      }
+
+      .cc-man {
+        max-height: 320px
+      }
+    }
+
+    @media(max-width:480px) {
+      .cc-card {
+        padding: 22px 18px
+      }
+
+      .cc-field {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px
+      }
+
+      .cc-field>label {
+        flex: none
+      }
+    }
+
+    .cc-history {
+      margin-top: 22px;
+      padding: 18px 0 0;
+      border-top: 1px solid #e5eee8
+    }
+
+    .cc-history-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap
+    }
+
+    .cc-history-head h4 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      color: #144a33;
+      font-size: 1rem
+    }
+
+    .cc-history-head h4 i {
+      color: #2ba673
+    }
+
+    .cc-history-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .cc-history-toggle,
+    .cc-history-clear {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 0;
+      background: transparent;
+      font: inherit;
+      font-size: .82rem;
+      cursor: pointer;
+      padding: 7px 9px;
+      border-radius: 8px
+    }
+
+    .cc-history-toggle {
+      color: #1f6b4a
+    }
+
+    .cc-history-toggle:hover {
+      background: #eaf5ef
+    }
+
+    .cc-history-clear {
+      color: var(--danger)
+    }
+
+    .cc-history-clear:hover {
+      background: var(--danger-bg)
+    }
+
+    .cc-history-toggle:focus-visible,
+    .cc-history-clear:focus-visible {
+      outline: 2px solid #2ba673;
+      outline-offset: 2px
+    }
+
+    .cc-history-status {
+      margin: 0 0 8px;
+      color: var(--danger);
+      font-size: .84rem
+    }
+
+    .cc-history-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0
+    }
+
+    .cc-history-empty {
+      margin: 0;
+      padding: 14px;
+      text-align: center;
+      background: #f7faf8;
+      border-radius: 12px;
+      color: #66756c;
+      font-size: .88rem
+    }
+
+    .cc-history-item {
+      padding: 12px 14px;
+      border: 1px solid #e7eee9;
+      border-radius: 14px;
+      background: #fbfdfb
+    }
+
+    .cc-history-item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px
+    }
+
+    .cc-history-cal {
+      color: #1f6b4a;
+      font-size: 1.05rem;
+      font-weight: 800
+    }
+
+    .cc-history-date {
+      color: #69776f;
+      font-size: .78rem
+    }
+
+    .cc-history-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      margin-top: 5px;
+      color: #647269;
+      font-size: .8rem
+    }
+
+    /* ============ Pop-up النتيجة ============ */
+    .cm {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(15, 23, 42, .6);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity .3s ease;
+      direction: rtl
+    }
+
+    .cm.show {
+      display: flex
+    }
+
+    .cm.open {
+      opacity: 1
+    }
+
+    .cm-dialog {
+      width: 100%;
+      max-width: 680px;
+      max-height: 92vh;
+      overflow-y: auto;
+      background: #fafbfc;
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
+      transform: translateY(30px) scale(.97);
+      transition: transform .35s cubic-bezier(.22, .8, .3, 1)
+    }
+
+    .cm.open .cm-dialog {
+      transform: none
+    }
+
+    .cm-head {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      padding: 34px 24px 30px;
+      background: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, .18), transparent 45%), linear-gradient(135deg, #17805a 0%, #2ba673 60%, #43c28a 100%)
+    }
+
+    .cm-x {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .2);
+      color: #fff;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: background-color .2s, transform .2s
+    }
+
+    .cm-x:hover {
+      background: rgba(255, 255, 255, .35)
+    }
+
+    .cm-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, .18);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 600;
+      margin-bottom: 12px
+    }
+
+    .cm-head h3 {
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin: 0 0 4px;
+      color: #fff
+    }
+
+    .cm-goal {
+      margin: 0 0 18px;
+      opacity: .9;
+      font-size: .95rem
+    }
+
+    .cm-gauge {
+      position: relative;
+      width: 210px;
+      height: 210px;
+      margin: 0 auto
+    }
+
+    .cm-gauge svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(135deg)
+    }
+
+    .cm-gauge circle {
+      fill: none;
+      stroke-width: 14;
+      stroke-linecap: round
+    }
+
+    .cm-track {
+      stroke: rgba(255, 255, 255, .22);
+      stroke-dasharray: 377 503
+    }
+
+    .cm-prog {
+      stroke: #f7d774;
+      stroke-dasharray: 0 503;
+      transition: stroke-dasharray 1.4s cubic-bezier(.22, .8, .3, 1);
+      filter: drop-shadow(0 0 6px rgba(247, 215, 116, .7))
+    }
+
+    .cm-gauge-tx {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center
+    }
+
+    .cm-gauge-tx strong {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1
+    }
+
+    .cm-gauge-tx small {
+      font-size: .8rem;
+      opacity: .9;
+      margin-top: 6px
+    }
+
+    .cm-body {
+      padding: 26px 24px 8px
+    }
+
+    .cm-mb {
+      margin-bottom: 24px
+    }
+
+    .cm-grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .cm-grid2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px
+    }
+
+    .cm-h {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #111827;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .cm-h i {
+      color: #2ba673
+    }
+
+    .cm-stat {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px 8px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .05)
+    }
+
+    .cm-stat i {
+      font-size: 1.4rem;
+      color: #2ba673;
+      display: block;
+      margin-bottom: 6px
+    }
+
+    .cm-stat b {
+      display: block;
+      font-size: 1.25rem;
+      color: #111827;
+      font-weight: 800
+    }
+
+    .cm-stat span {
+      display: block;
+      font-size: .72rem;
+      color: #6b7280;
+      margin-top: 2px;
+      line-height: 1.5
+    }
+
+    .cm-mac {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px 10px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .05)
+    }
+
+    .cm-ic {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin: 0 auto 8px
+    }
+
+    .cm-mac b {
+      display: block;
+      font-size: .85rem;
+      color: #374151
+    }
+
+    .cm-mac strong {
+      display: block;
+      font-size: 1.3rem;
+      color: #111827;
+      font-weight: 800;
+      margin-top: 2px
+    }
+
+    .cm-mac small {
+      display: block;
+      color: #6b7280;
+      font-size: .75rem;
+      margin-bottom: 8px
+    }
+
+    .cm-bar {
+      height: 6px;
+      border-radius: 6px;
+      background: #eef0f3;
+      overflow: hidden
+    }
+
+    .cm-bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 6px;
+      transition: width 1.2s ease
+    }
+
+    .cm-todo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #374151;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .05)
+    }
+
+    .cm-todo i {
+      font-size: 1.3rem;
+      color: #2ba673
+    }
+
+    .cm-note {
+      background: var(--note-bg);
+      color: var(--note);
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      margin-top: 16px;
+      line-height: 1.8
+    }
+
+    .cm-note[hidden] {
+      display: none
+    }
+
+    .cm-foot {
+      padding: 18px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center
+    }
+
+    .cm-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 50px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(135deg, #d4a72c, #f0cb5b);
+      color: #3b2d00;
+      font-weight: 800;
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 8px 22px rgba(212, 167, 44, .4);
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .cm-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 11px 26px rgba(212, 167, 44, .48)
+    }
+
+    .cm-redo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 42px;
+      padding: 8px 14px;
+      background: none;
+      border: 0;
+      border-radius: 24px;
+      color: #6b7280;
+      font-size: .9rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background-color .2s, color .2s
+    }
+
+    .cm-redo:hover {
+      background: #eaf5ef;
+      color: #2ba673
+    }
+
+    body.cm-lock {
+      overflow: hidden
+    }
+
+    @media(max-width:576px) {
+      .cm-gauge {
+        width: 180px;
+        height: 180px
+      }
+
+      .cm-gauge-tx strong {
+        font-size: 2.3rem
+      }
+
+      .cm-stat b {
+        font-size: 1.05rem
+      }
+
+      .cm-stat span {
+        font-size: .66rem
+      }
+
+      .cm-grid3 {
+        gap: 8px
+      }
+
+      .cm-mac b {
+        font-size: .78rem
+      }
+
+      .cm-mac strong {
+        font-size: 1.1rem
+      }
+    }
+
+    .booking {
+      padding: 10px 20px !important;
+    }
+
+    .about .photo {
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .about .photo img.im {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .photo {
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .photo img.im {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="nav">
+    <div class="container">
+      <a href="#home" class="logo">
+        <img src="img/logo.webp" alt="د. إيمان شامة">
+      </a>
+      <button class="burger" id="bg" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="lk"><i
+          class="bi bi-list" aria-hidden="true"></i></button>
+      <ul class="links" id="lk">
+        <li><button class="menu-close" id="menuClose" type="button" aria-label="إغلاق القائمة"><i class="bi bi-x-lg"
+              aria-hidden="true"></i></button></li>
+        <li><a href="#home"> الرئيسية</a></li>
+        <li><a href="#about"> عن الدكتورة</a></li>
+        <li><a href="#services"> الخدمات</a></li>
+        <li><a href="#how"> كيف نعمل</a></li>
+        <li><a href="#plans"> الباقات</a></li>
+        <li><a href="#faq"> أسئلة شائعة</a></li>
+        <li><a href="#book" class="btn btn-gold booking"> احجزي الآن</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ الرئيسية ============ -->
+  <main id="home" class="pg">
+    <header class="slider">
+
+      <!-- Slide 1 -->
+      <div class="slide on">
+        <div class="slide-bg">
+          <img src="img/ttt.webp" alt="تغذية الأسرة">
+        </div>
+        <div class="container">
+          <div class="tx">
+            <small>عيادة التغذية العلاجية</small>
+            <h1>صحتك تبدأ من طبقك… ونحن نرسم لك الطريق</h1>
+            <p>برامج غذائية مخصصة لك تماماً، بدون حرمان وبنتائج تدوم.</p>
+            <a href="#book" class="btn btn-gold"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي
+              استشارتك</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Slide 2 -->
-    <div class="slide">
-      <div class="slide-bg">
-        <img src="img/t.jpg" alt="التغذية العلاجية">
-      </div>
-      <div class="container">
-        <div class="tx">
-          <small>إنقاص وزن صحي</small>
-          <h1>وزن مثالي بخطة سهلة وممتعة</h1>
-          <p>نظام متوازن حسب نمط حياتك وتحاليلك ومتابعة مستمرة حتى هدفك.</p>
-          <a href="#plans" class="btn btn-gold"><i class="bi bi-tags" aria-hidden="true"></i> شوفي الباقات</a>
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="slide-bg">
+          <img src="img/t.webp" alt="التغذية العلاجية">
+        </div>
+        <div class="container">
+          <div class="tx">
+            <small>إنقاص وزن صحي</small>
+            <h1>وزن مثالي بخطة سهلة وممتعة</h1>
+            <p>نظام متوازن حسب نمط حياتك وتحاليلك ومتابعة مستمرة حتى هدفك.</p>
+            <a href="#plans" class="btn btn-gold"><i class="bi bi-tags" aria-hidden="true"></i> شوفي الباقات</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Slide 3 -->
-    <div class="slide">
-      <div class="slide-bg">
-        <img src="img/xx.png" alt="إنقاص الوزن">
-      </div>
-      <div class="container">
-        <div class="tx">
-          <small>تغذية الأسرة</small>
-          <h1>تغذية سليمة للحوامل والأطفال وكل العائلة</h1>
-          <p>برامج متخصصة للحمل والرضاعة والأطفال وأصحاب الأمراض المزمنة.</p>
-          <a href="#services" class="btn btn-gold"><i class="bi bi-heart-pulse" aria-hidden="true"></i> اعرفي خدماتنا</a>
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="slide-bg">
+          <img src="img/xx.webp" alt="إنقاص الوزن">
+        </div>
+        <div class="container">
+          <div class="tx">
+            <small>تغذية الأسرة</small>
+            <h1>تغذية سليمة للحوامل والأطفال وكل العائلة</h1>
+            <p>برامج متخصصة للحمل والرضاعة والأطفال وأصحاب الأمراض المزمنة.</p>
+            <a href="#services" class="btn btn-gold"><i class="bi bi-heart-pulse" aria-hidden="true"></i> اعرفي
+              خدماتنا</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Controls -->
-    <button class="arr p" id="pv" aria-label="السابق">›</button>
-    <button class="arr n" id="nx" aria-label="التالي">‹</button>
-    <div class="dots" id="dots"></div>
-    <div class="bar" id="bar"></div>
-  </header>
+      <!-- Controls -->
+      <button class="arr p" id="pv" aria-label="السابق">›</button>
+      <button class="arr n" id="nx" aria-label="التالي">‹</button>
+      <div class="dots" id="dots"></div>
+      <div class="bar" id="bar"></div>
+    </header>
 
-  <!-- <div class="stats">
+    <!-- <div class="stats">
     <div class="container">
       <div><b data-n="1500">0</b>حالة ناجحة</div>
       <div><b data-n="10">0</b>سنوات خبرة</div>
@@ -1495,1179 +2416,1173 @@ body.cm-lock{overflow:hidden}
     </div>
   </div> -->
 
-  <section>
-    <div class="container">
-      <div class="title rv">
-        <span><i class="bi bi-apple" aria-hidden="true"></i> نظام لكل هدف</span>
-        <h2>أكل صحي بطعم حلو</h2>
-        <i></i>
-      </div>
-      <div class="gal">
-        <div class="rv"><img src="img/2.jpg" alt="Healthy Food Bowl" class="im"></div>
-        <div class="rv"><img src="img/3.jpg" alt="Healthy Food Bowl" class="im"></div>
-        <div class="rv"><img src="img/4.jpg" alt="Healthy Food Bowl" class="im"></div>
-        <div class="rv"><img src="img/1.jpg" alt="Healthy Food Bowl" class="im"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== حاسبة السعرات ===================== -->
-  <section class="cc-sec" id="calc">
-    <div class="container">
-      <div class="cc-wrap">
-
-        <!-- النص (يمين) -->
-        <div class="cc-intro rv">
-          <span class="cc-kicker"><i class="bi bi-fire" aria-hidden="true"></i> السعرات الحرارية</span>
-          <h2><i class="bi bi-calculator" aria-hidden="true"></i> تعرّف على احتياجك اليومي بدقة</h2>
-          <p>احسب سعراتك اليومية وابدأ خطة تناسب جسمك وأهدافك.</p>
+    <section>
+      <div class="container">
+        <div class="title rv">
+          <span><i class="bi bi-apple" aria-hidden="true"></i> نظام لكل هدف</span>
+          <h2>أكل صحي بطعم حلو</h2>
+          <i></i>
         </div>
+        <div class="gal">
+          <div class="rv"><img src="img/2.webp" alt="Healthy Food Bowl" class="im"></div>
+          <div class="rv"><img src="img/3.webp" alt="Healthy Food Bowl" class="im"></div>
+          <div class="rv"><img src="img/4.webp" alt="Healthy Food Bowl" class="im"></div>
+          <div class="rv"><img src="img/1.webp" alt="Healthy Food Bowl" class="im"></div>
+        </div>
+      </div>
+    </section>
 
-        <!-- الفورم (النص) -->
-        <div class="cc-formcol rv">
-          <div class="cc-card">
-            <h3 class="cc-hi">حسناً!</h3>
-            <h4 class="cc-sub">لنتعرّف على احتياجك اليومي.</h4>
+    <!-- ===================== حاسبة السعرات ===================== -->
+    <section class="cc-sec" id="calc">
+      <div class="container">
+        <div class="cc-wrap">
 
-            <form id="ccForm" novalidate>
-              <div class="cc-field">
-                <label><i class="bi bi-gender-ambiguous" aria-hidden="true"></i> النوع</label>
-                <div class="cc-gender">
-                  <button type="button" class="cc-g" data-g="female"><i class="bi bi-gender-female"></i> أنثى</button>
-                  <button type="button" class="cc-g" data-g="male"><i class="bi bi-gender-male"></i> ذكر</button>
+          <!-- النص (يمين) -->
+          <div class="cc-intro rv">
+            <span class="cc-kicker"><i class="bi bi-fire" aria-hidden="true"></i> السعرات الحرارية</span>
+            <h2><i class="bi bi-calculator" aria-hidden="true"></i> تعرّف على احتياجك اليومي بدقة</h2>
+            <p>احسب سعراتك اليومية وابدأ خطة تناسب جسمك وأهدافك.</p>
+          </div>
+
+          <!-- الفورم (النص) -->
+          <div class="cc-formcol rv">
+            <div class="cc-card">
+              <h3 class="cc-hi">حسناً!</h3>
+              <h4 class="cc-sub">لنتعرّف على احتياجك اليومي.</h4>
+
+              <form id="ccForm" novalidate>
+                <div class="cc-field">
+                  <label><i class="bi bi-gender-ambiguous" aria-hidden="true"></i> النوع</label>
+                  <div class="cc-gender">
+                    <button type="button" class="cc-g" data-g="female"><i class="bi bi-gender-female"></i> أنثى</button>
+                    <button type="button" class="cc-g" data-g="male"><i class="bi bi-gender-male"></i> ذكر</button>
+                  </div>
                 </div>
-              </div>
 
-              <div class="cc-field">
-                <label for="ccDob"><i class="bi bi-calendar3" aria-hidden="true"></i> تاريخ الميلاد</label>
-                <input type="date" id="ccDob" class="cc-in date-input" required>
-              </div>
-
-              <div class="cc-field">
-                <label><i class="bi bi-rulers" aria-hidden="true"></i> الطول والوزن</label>
-                <div class="cc-two">
-                  <input type="number" id="ccH" class="cc-in" placeholder="الطول (سم)" min="100" max="250" step="1" required>
-                  <input type="number" id="ccW" class="cc-in" placeholder="الوزن (كجم)" min="25" max="300" step="0.1" required>
+                <div class="cc-field">
+                  <label for="ccDob"><i class="bi bi-calendar3" aria-hidden="true"></i> تاريخ الميلاد</label>
+                  <input type="date" id="ccDob" class="cc-in date-input" required>
                 </div>
-              </div>
 
-              <div class="cc-field">
-                <label for="ccAct"><i class="bi bi-activity" aria-hidden="true"></i> مستوى نشاطك</label>
-                <select id="ccAct" class="cc-in" required>
-                  <option value="">اختر مستوى النشاط</option>
-                  <option value="1.2">خامل (قليل الحركة)</option>
-                  <option value="1.375">نشاط خفيف (1-3 أيام تمرين)</option>
-                  <option value="1.55">نشاط متوسط (3-5 أيام تمرين)</option>
-                  <option value="1.725">نشاط عالي (6-7 أيام تمرين)</option>
-                  <option value="1.9">نشاط عالي جداً (مجهود بدني شاق)</option>
-                </select>
-              </div>
-
-              <div class="cc-field">
-                <label for="ccGoal"><i class="bi bi-bullseye" aria-hidden="true"></i> هدفك الصحي</label>
-                <select id="ccGoal" class="cc-in" required>
-                  <option value="">اختر هدفك الصحي</option>
-                  <option value="lose">إنقاص الوزن</option>
-                  <option value="maintain">تثبيت الوزن</option>
-                  <option value="gain">زيادة الوزن</option>
-                </select>
-              </div>
-
-              <div class="cc-field">
-                <label for="ccAllergy"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> الحساسية</label>
-                <select id="ccAllergy" class="cc-in" required>
-                  <option value="none">لا يوجد</option>
-                  <option value="gluten">الجلوتين</option>
-                  <option value="lactose">اللاكتوز</option>
-                  <option value="nuts">المكسرات</option>
-                  <option value="eggs">البيض</option>
-                  <option value="seafood">المأكولات البحرية</option>
-                </select>
-              </div>
-
-              <div class="cc-field">
-                <label for="ccMed"><i class="bi bi-heart-pulse" aria-hidden="true"></i> الحالات الطبية؟</label>
-                <select id="ccMed" class="cc-in" required>
-                  <option value="none">لا يوجد</option>
-                  <option value="diabetes">السكري</option>
-                  <option value="pressure">ضغط الدم</option>
-                  <option value="thyroid">الغدة الدرقية</option>
-                  <option value="pcos">تكيس المبايض</option>
-                  <option value="cholesterol">الكوليسترول</option>
-                  <option value="other">أخرى</option>
-                </select>
-              </div>
-
-              <div id="ccErr" class="cc-err" hidden></div>
-              <button type="submit" class="cc-btn"><i class="bi bi-calculator" aria-hidden="true"></i> حساب السعرات</button>
-            </form>
-            <section class="cc-history" aria-labelledby="ccHistoryTitle">
-              <div class="cc-history-head">
-                <h4 id="ccHistoryTitle"><i class="bi bi-clock-history" aria-hidden="true"></i> سجل حساباتك السابقة</h4>
-                <div class="cc-history-actions">
-                  <button type="button" class="cc-history-toggle" id="ccHistoryToggle" aria-expanded="false" aria-controls="ccHistoryContent">
-                    <i class="bi bi-eye" aria-hidden="true"></i> عرض السجل
-                  </button>
-                  <button type="button" class="cc-history-clear" id="ccHistoryClear" hidden>مسح السجل</button>
+                <div class="cc-field">
+                  <label><i class="bi bi-rulers" aria-hidden="true"></i> الطول والوزن</label>
+                  <div class="cc-two">
+                    <input type="number" id="ccH" class="cc-in" placeholder="الطول (سم)" min="100" max="250" step="1"
+                      required>
+                    <input type="number" id="ccW" class="cc-in" placeholder="الوزن (كجم)" min="25" max="300" step="0.1"
+                      required>
+                  </div>
                 </div>
-              </div>
-              <div id="ccHistoryContent" hidden>
-                <p class="cc-history-status" id="ccHistoryStatus" role="status" hidden></p>
-                <ul class="cc-history-list" id="ccHistoryList" aria-live="polite"></ul>
-              </div>
-            </section>
+
+                <div class="cc-field">
+                  <label for="ccAct"><i class="bi bi-activity" aria-hidden="true"></i> مستوى نشاطك</label>
+                  <select id="ccAct" class="cc-in" required>
+                    <option value="">اختر مستوى النشاط</option>
+                    <option value="1.2">خامل (قليل الحركة)</option>
+                    <option value="1.375">نشاط خفيف (1-3 أيام تمرين)</option>
+                    <option value="1.55">نشاط متوسط (3-5 أيام تمرين)</option>
+                    <option value="1.725">نشاط عالي (6-7 أيام تمرين)</option>
+                    <option value="1.9">نشاط عالي جداً (مجهود بدني شاق)</option>
+                  </select>
+                </div>
+
+                <div class="cc-field">
+                  <label for="ccGoal"><i class="bi bi-bullseye" aria-hidden="true"></i> هدفك الصحي</label>
+                  <select id="ccGoal" class="cc-in" required>
+                    <option value="">اختر هدفك الصحي</option>
+                    <option value="lose">إنقاص الوزن</option>
+                    <option value="maintain">تثبيت الوزن</option>
+                    <option value="gain">زيادة الوزن</option>
+                  </select>
+                </div>
+
+                <div class="cc-field">
+                  <label for="ccAllergy"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> الحساسية</label>
+                  <select id="ccAllergy" class="cc-in" required>
+                    <option value="none">لا يوجد</option>
+                    <option value="gluten">الجلوتين</option>
+                    <option value="lactose">اللاكتوز</option>
+                    <option value="nuts">المكسرات</option>
+                    <option value="eggs">البيض</option>
+                    <option value="seafood">المأكولات البحرية</option>
+                  </select>
+                </div>
+
+                <div class="cc-field">
+                  <label for="ccMed"><i class="bi bi-heart-pulse" aria-hidden="true"></i> الحالات الطبية؟</label>
+                  <select id="ccMed" class="cc-in" required>
+                    <option value="none">لا يوجد</option>
+                    <option value="diabetes">السكري</option>
+                    <option value="pressure">ضغط الدم</option>
+                    <option value="thyroid">الغدة الدرقية</option>
+                    <option value="pcos">تكيس المبايض</option>
+                    <option value="cholesterol">الكوليسترول</option>
+                    <option value="other">أخرى</option>
+                  </select>
+                </div>
+
+                <div id="ccErr" class="cc-err" hidden></div>
+                <button type="submit" class="cc-btn"><i class="bi bi-calculator" aria-hidden="true"></i> حساب
+                  السعرات</button>
+              </form>
+              <section class="cc-history" aria-labelledby="ccHistoryTitle">
+                <div class="cc-history-head">
+                  <h4 id="ccHistoryTitle"><i class="bi bi-clock-history" aria-hidden="true"></i> سجل حساباتك السابقة
+                  </h4>
+                  <div class="cc-history-actions">
+                    <button type="button" class="cc-history-toggle" id="ccHistoryToggle" aria-expanded="false"
+                      aria-controls="ccHistoryContent">
+                      <i class="bi bi-eye" aria-hidden="true"></i> عرض السجل
+                    </button>
+                    <button type="button" class="cc-history-clear" id="ccHistoryClear" hidden>مسح السجل</button>
+                  </div>
+                </div>
+                <div id="ccHistoryContent" hidden>
+                  <p class="cc-history-status" id="ccHistoryStatus" role="status" hidden></p>
+                  <ul class="cc-history-list" id="ccHistoryList" aria-live="polite"></ul>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- جسم الإنسان (يسار) -->
+          <div class="cc-imgcol rv">
+            <img id="ccMan" src="img/male.svg" alt="جسم الإنسان" class="cc-man" data-male="img/male.svg"
+              data-female="img/female.svg">
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- =================== نهاية حاسبة السعرات =================== -->
+
+    <section class="bg2">
+      <div class="container">
+        <div class="title rv">
+          <span><i class="bi bi-chat-heart" aria-hidden="true"></i> قالوا عنا</span>
+          <h2>آراء العميلات</h2>
+          <i></i>
+        </div>
+        <div class="tst rv" id="tst">
+          <blockquote class="on">
+            <i class="bi bi-quote" aria-hidden="true"></i>
+            "نزلت 12 كيلو في 3 شهور بدون ما أحس بحرمان. النظام كان سهل وعملي جداً."<cite>— سارة م.</cite>
+          </blockquote>
+          <blockquote>
+            <i class="bi bi-quote" aria-hidden="true"></i>
+            "دكتورة إيمان متابعة معايا طول فترة الحمل والحمد لله وزني كان مظبوط."<cite>— منى ع.</cite>
+          </blockquote>
+          <blockquote>
+            <i class="bi bi-quote" aria-hidden="true"></i>
+            "السكر عندي اتظبط بعد النظام، وبقيت أكل من غير خوف."<cite>— أم أحمد</cite>
+          </blockquote>
+        </div>
+        <p style="text-align: center; margin-top: 30px">
+          <a href="#book" class="btn btn-gold"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي موعدك
+            الآن</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Pop-up النتيجة (حطه بعد آخر </main> في الصفحة) ===================== -->
+  <div class="cm" id="ccModal" aria-hidden="true">
+    <div class="cm-dialog" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
+
+      <!-- الهيدر -->
+      <div class="cm-head">
+        <button type="button" class="cm-x" id="cmClose" aria-label="إغلاق"><i class="bi bi-x-lg"></i></button>
+        <span class="cm-badge"><i class="bi bi-activity"></i> تقرير السعرات الشخصي</span>
+        <h3 id="cmTitle"><i class="bi bi-fire" aria-hidden="true"></i> احتياجك اليومي من السعرات</h3>
+        <p id="cmGoal" class="cm-goal">—</p>
+
+        <div class="cm-gauge">
+          <svg viewBox="0 0 200 200">
+            <circle class="cm-track" cx="100" cy="100" r="80"></circle>
+            <circle class="cm-prog" id="cmProg" cx="100" cy="100" r="80"></circle>
+          </svg>
+          <div class="cm-gauge-tx">
+            <strong id="cmCal">٠</strong>
+            <small>سعرة حرارية / يوم</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- المحتوى -->
+      <div class="cm-body">
+
+        <div class="cm-grid3 cm-mb">
+          <div class="cm-stat">
+            <i class="bi bi-lightning-charge"></i>
+            <b id="cmBmr">—</b>
+            <span>معدل الأيض الأساسي</span>
+          </div>
+          <div class="cm-stat">
+            <i class="bi bi-battery-charging"></i>
+            <b id="cmTdee">—</b>
+            <span>احتياج الحفاظ على الوزن</span>
+          </div>
+          <div class="cm-stat">
+            <i class="bi bi-speedometer2"></i>
+            <b id="cmBmi">—</b>
+            <span id="cmBmiTx">مؤشر كتلة الجسم</span>
           </div>
         </div>
 
-        <!-- جسم الإنسان (يسار) -->
-        <div class="cc-imgcol rv">
-          <img id="ccMan" src="img/male.svg" alt="جسم الإنسان" class="cc-man"
-               data-male="img/male.svg" data-female="img/female.svg">
+        <h5 class="cm-h"><i class="bi bi-pie-chart"></i> توزيع العناصر الغذائية</h5>
+        <div class="cm-grid3 cm-mb">
+          <div class="cm-mac">
+            <div class="cm-ic" style="background:#fdecec;color:#e25555"><i class="bi bi-egg-fried"></i></div>
+            <b>بروتين</b>
+            <strong id="cmPrG">—</strong>
+            <small id="cmPrP">—</small>
+            <div class="cm-bar"><i id="cmPrB" style="background:#e25555"></i></div>
+          </div>
+          <div class="cm-mac">
+            <div class="cm-ic" style="background:#fff6d6;color:#d4a30a"><i class="bi bi-basket"></i></div>
+            <b>كربوهيدرات</b>
+            <strong id="cmCaG">—</strong>
+            <small id="cmCaP">—</small>
+            <div class="cm-bar"><i id="cmCaB" style="background:#f5c518"></i></div>
+          </div>
+          <div class="cm-mac">
+            <div class="cm-ic" style="background:#e6f0fb;color:#3b82c4"><i class="bi bi-droplet-half"></i></div>
+            <b>دهون</b>
+            <strong id="cmFaG">—</strong>
+            <small id="cmFaP">—</small>
+            <div class="cm-bar"><i id="cmFaB" style="background:#3b82c4"></i></div>
+          </div>
         </div>
 
+        <h5 class="cm-h"><i class="bi bi-check2-circle"></i> ما عليك فعله يومياً لتحقيق هدفك</h5>
+        <div class="cm-grid2">
+          <div class="cm-todo"><i class="bi bi-person-walking"></i><span id="cmSteps">—</span></div>
+          <div class="cm-todo"><i class="bi bi-moon-stars"></i><span id="cmSleep">—</span></div>
+          <div class="cm-todo"><i class="bi bi-fire" style="color:#f97316"></i><span id="cmBurn">—</span></div>
+          <div class="cm-todo"><i class="bi bi-droplet" style="color:#3b9be8"></i><span id="cmWater">—</span></div>
+        </div>
+
+        <div id="cmNote" class="cm-note" hidden></div>
       </div>
+
+      <!-- الفوتر -->
+      <div class="cm-foot">
+        <a href="#book" class="cm-cta" id="cmCta"><i class="bi bi-whatsapp"></i> سجّل الآن واحجز استشارتك</a>
+        <button type="button" class="cm-redo" id="cmRedo"><i class="bi bi-arrow-repeat"></i> إعادة الحساب</button>
+      </div>
+
     </div>
-  </section>
-  <!-- =================== نهاية حاسبة السعرات =================== -->
-
-  <section class="bg2">
-    <div class="container">
-      <div class="title rv">
-        <span><i class="bi bi-chat-heart" aria-hidden="true"></i> قالوا عنا</span>
-        <h2>آراء العميلات</h2>
-        <i></i>
-      </div>
-      <div class="tst rv" id="tst">
-        <blockquote class="on">
-          <i class="bi bi-quote" aria-hidden="true"></i>
-          "نزلت 12 كيلو في 3 شهور بدون ما أحس بحرمان. النظام كان سهل وعملي جداً."<cite>— سارة م.</cite>
-        </blockquote>
-        <blockquote>
-          <i class="bi bi-quote" aria-hidden="true"></i>
-          "دكتورة إيمان متابعة معايا طول فترة الحمل والحمد لله وزني كان مظبوط."<cite>— منى ع.</cite>
-        </blockquote>
-        <blockquote>
-          <i class="bi bi-quote" aria-hidden="true"></i>
-          "السكر عندي اتظبط بعد النظام، وبقيت أكل من غير خوف."<cite>— أم أحمد</cite>
-        </blockquote>
-      </div>
-      <p style="text-align: center; margin-top: 30px">
-        <a href="#book" class="btn btn-gold"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي موعدك الآن</a>
-      </p>
-    </div>
-  </section>
-</main>
-
-<!-- ===================== Pop-up النتيجة (حطه بعد آخر </main> في الصفحة) ===================== -->
-<div class="cm" id="ccModal" aria-hidden="true">
-  <div class="cm-dialog" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
-
-    <!-- الهيدر -->
-    <div class="cm-head">
-      <button type="button" class="cm-x" id="cmClose" aria-label="إغلاق"><i class="bi bi-x-lg"></i></button>
-      <span class="cm-badge"><i class="bi bi-activity"></i> تقرير السعرات الشخصي</span>
-      <h3 id="cmTitle"><i class="bi bi-fire" aria-hidden="true"></i> احتياجك اليومي من السعرات</h3>
-      <p id="cmGoal" class="cm-goal">—</p>
-
-      <div class="cm-gauge">
-        <svg viewBox="0 0 200 200">
-          <circle class="cm-track" cx="100" cy="100" r="80"></circle>
-          <circle class="cm-prog" id="cmProg" cx="100" cy="100" r="80"></circle>
-        </svg>
-        <div class="cm-gauge-tx">
-          <strong id="cmCal">٠</strong>
-          <small>سعرة حرارية / يوم</small>
-        </div>
-      </div>
-    </div>
-
-    <!-- المحتوى -->
-    <div class="cm-body">
-
-      <div class="cm-grid3 cm-mb">
-        <div class="cm-stat">
-          <i class="bi bi-lightning-charge"></i>
-          <b id="cmBmr">—</b>
-          <span>معدل الأيض الأساسي</span>
-        </div>
-        <div class="cm-stat">
-          <i class="bi bi-battery-charging"></i>
-          <b id="cmTdee">—</b>
-          <span>احتياج الحفاظ على الوزن</span>
-        </div>
-        <div class="cm-stat">
-          <i class="bi bi-speedometer2"></i>
-          <b id="cmBmi">—</b>
-          <span id="cmBmiTx">مؤشر كتلة الجسم</span>
-        </div>
-      </div>
-
-      <h5 class="cm-h"><i class="bi bi-pie-chart"></i> توزيع العناصر الغذائية</h5>
-      <div class="cm-grid3 cm-mb">
-        <div class="cm-mac">
-          <div class="cm-ic" style="background:#fdecec;color:#e25555"><i class="bi bi-egg-fried"></i></div>
-          <b>بروتين</b>
-          <strong id="cmPrG">—</strong>
-          <small id="cmPrP">—</small>
-          <div class="cm-bar"><i id="cmPrB" style="background:#e25555"></i></div>
-        </div>
-        <div class="cm-mac">
-          <div class="cm-ic" style="background:#fff6d6;color:#d4a30a"><i class="bi bi-basket"></i></div>
-          <b>كربوهيدرات</b>
-          <strong id="cmCaG">—</strong>
-          <small id="cmCaP">—</small>
-          <div class="cm-bar"><i id="cmCaB" style="background:#f5c518"></i></div>
-        </div>
-        <div class="cm-mac">
-          <div class="cm-ic" style="background:#e6f0fb;color:#3b82c4"><i class="bi bi-droplet-half"></i></div>
-          <b>دهون</b>
-          <strong id="cmFaG">—</strong>
-          <small id="cmFaP">—</small>
-          <div class="cm-bar"><i id="cmFaB" style="background:#3b82c4"></i></div>
-        </div>
-      </div>
-
-      <h5 class="cm-h"><i class="bi bi-check2-circle"></i> ما عليك فعله يومياً لتحقيق هدفك</h5>
-      <div class="cm-grid2">
-        <div class="cm-todo"><i class="bi bi-person-walking"></i><span id="cmSteps">—</span></div>
-        <div class="cm-todo"><i class="bi bi-moon-stars"></i><span id="cmSleep">—</span></div>
-        <div class="cm-todo"><i class="bi bi-fire" style="color:#f97316"></i><span id="cmBurn">—</span></div>
-        <div class="cm-todo"><i class="bi bi-droplet" style="color:#3b9be8"></i><span id="cmWater">—</span></div>
-      </div>
-
-      <div id="cmNote" class="cm-note" hidden></div>
-    </div>
-
-    <!-- الفوتر -->
-    <div class="cm-foot">
-      <a href="#book" class="cm-cta" id="cmCta"><i class="bi bi-whatsapp"></i> سجّل الآن واحجز استشارتك</a>
-      <button type="button" class="cm-redo" id="cmRedo"><i class="bi bi-arrow-repeat"></i> إعادة الحساب</button>
-    </div>
-
   </div>
-</div>
 
-    <!-- ============ عن الدكتورة ============ -->
-    <main id="about" class="pg" hidden>
-      <div class="ph">
-        <h1><i class="bi bi-person-vcard" aria-hidden="true"></i> عن الدكتورة</h1>
-        <p>الرئيسية / عن الدكتورة</p>
-      </div>
-   <section>
-    <div class="container about">
+  <!-- ============ عن الدكتورة ============ -->
+  <main id="about" class="pg" hidden>
+    <div class="ph">
+      <h1><i class="bi bi-person-vcard" aria-hidden="true"></i> عن الدكتورة</h1>
+      <p>الرئيسية / عن الدكتورة</p>
+    </div>
+    <section>
+      <div class="container about">
 
         <div class="photo rv r">
-            <img
-                src="img/profileImg.jpg"
-                alt="د. إيمان شامة - أخصائية التغذية العلاجية"
-                class="im"
-            >
+          <img src="img/profileImg.webp" alt="د. إيمان شامة - أخصائية التغذية العلاجية" class="im">
         </div>
 
         <div class="rv l">
-            <h3><i class="bi bi-person-badge" aria-hidden="true"></i> د. إيمان شامة — أخصائية التغذية العلاجية وإنقاص الوزن</h3>
+          <h3><i class="bi bi-person-badge" aria-hidden="true"></i> د. إيمان شامة — أخصائية التغذية العلاجية وإنقاص
+            الوزن</h3>
 
-            <p>
-                أؤمن أن الغذاء السليم هو أساس الصحة. أقدم لكِ برنامجاً مخصصاً
-                يراعي حالتك الصحية وعاداتك وميزانيتك، مع متابعة دقيقة تضمن لكِ
-                نتائج حقيقية وثابتة بدون أنظمة قاسية.
-            </p>
+          <p>
+            أؤمن أن الغذاء السليم هو أساس الصحة. أقدم لكِ برنامجاً مخصصاً
+            يراعي حالتك الصحية وعاداتك وميزانيتك، مع متابعة دقيقة تضمن لكِ
+            نتائج حقيقية وثابتة بدون أنظمة قاسية.
+          </p>
 
-            <p>
-                نهتم بالتفاصيل: تحليل الجسم، التحاليل الطبية، الأكل المفضل عندك،
-                ونمط يومك.
-            </p>
+          <p>
+            نهتم بالتفاصيل: تحليل الجسم، التحاليل الطبية، الأكل المفضل عندك،
+            ونمط يومك.
+          </p>
 
-            <div class="chips">
-                <span><i class="bi bi-speedometer2" aria-hidden="true"></i> إنقاص الوزن</span>
-                <span><i class="bi bi-egg-fried" aria-hidden="true"></i> زيادة الوزن</span>
-                <span><i class="bi bi-heart-pulse" aria-hidden="true"></i> تغذية الحمل</span>
-                <span><i class="bi bi-heart-pulse" aria-hidden="true"></i> السكر والضغط</span>
-                <span><i class="bi bi-emoji-smile" aria-hidden="true"></i> تغذية الأطفال</span>
-                <span><i class="bi bi-lightning" aria-hidden="true"></i> الرياضيين</span>
-            </div>
+          <div class="chips">
+            <span><i class="bi bi-speedometer2" aria-hidden="true"></i> إنقاص الوزن</span>
+            <span><i class="bi bi-egg-fried" aria-hidden="true"></i> زيادة الوزن</span>
+            <span><i class="bi bi-heart-pulse" aria-hidden="true"></i> تغذية الحمل</span>
+            <span><i class="bi bi-heart-pulse" aria-hidden="true"></i> السكر والضغط</span>
+            <span><i class="bi bi-emoji-smile" aria-hidden="true"></i> تغذية الأطفال</span>
+            <span><i class="bi bi-lightning" aria-hidden="true"></i> الرياضيين</span>
+          </div>
 
         </div>
+      </div>
+    </section>
+    <section class="bg2">
+      <div class="container">
+        <div class="title rv">
+          <span><i class="bi bi-award" aria-hidden="true"></i> قيمنا</span>
+          <h2>ليه تختاري عيادتنا؟</h2>
+          <i></i>
+        </div>
+        <div class="grid">
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-journal-check" aria-hidden="true"></i>
+            </div>
+            <h3>خطة مخصصة</h3>
+            <p>لا يوجد نظام جاهز، كل خطة مصممة لكِ وحدك.</p>
+          </div>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-heart-pulse" aria-hidden="true"></i>
+            </div>
+            <h3>اهتمام بصحتك</h3>
+            <p>نراعي حالتك الطبية وتحاليلك في كل خطوة.</p>
+          </div>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-chat-dots" aria-hidden="true"></i>
+            </div>
+            <h3>متابعة مستمرة</h3>
+            <p>تواصل دائم عبر الواتساب للإجابة عن أي سؤال.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ الخدمات ============ -->
+  <main id="services" class="pg" hidden>
+    <div class="ph">
+      <h1><i class="bi bi-heart-pulse" aria-hidden="true"></i> خدماتنا</h1>
+      <p>الرئيسية / الخدمات</p>
     </div>
-</section>
-      <section class="bg2">
-        <div class="container">
-          <div class="title rv">
-            <span><i class="bi bi-award" aria-hidden="true"></i> قيمنا</span>
-            <h2>ليه تختاري عيادتنا؟</h2>
-            <i></i>
+    <section>
+      <div class="container">
+        <div class="grid">
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-speedometer2" aria-hidden="true"></i>
+            </div>
+            <h3>إنقاص الوزن</h3>
+            <p>خطة غذائية متدرجة وآمنة تناسب جسمك وهدفك.</p>
           </div>
-          <div class="grid">
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-journal-check" aria-hidden="true"></i>
-              </div>
-              <h3>خطة مخصصة</h3>
-              <p>لا يوجد نظام جاهز، كل خطة مصممة لكِ وحدك.</p>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-egg-fried" aria-hidden="true"></i>
             </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-heart-pulse" aria-hidden="true"></i>
-              </div>
-              <h3>اهتمام بصحتك</h3>
-              <p>نراعي حالتك الطبية وتحاليلك في كل خطوة.</p>
-            </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-chat-dots" aria-hidden="true"></i>
-              </div>
-              <h3>متابعة مستمرة</h3>
-              <p>تواصل دائم عبر الواتساب للإجابة عن أي سؤال.</p>
-            </div>
+            <h3>زيادة الوزن وبناء العضلات</h3>
+            <p>برامج لزيادة الوزن الصحي وتحسين التكوين الجسماني.</p>
           </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ============ الخدمات ============ -->
-    <main id="services" class="pg" hidden>
-      <div class="ph">
-        <h1><i class="bi bi-heart-pulse" aria-hidden="true"></i> خدماتنا</h1>
-        <p>الرئيسية / الخدمات</p>
-      </div>
-      <section>
-        <div class="container">
-          <div class="grid">
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-speedometer2" aria-hidden="true"></i>
-              </div>
-              <h3>إنقاص الوزن</h3>
-              <p>خطة غذائية متدرجة وآمنة تناسب جسمك وهدفك.</p>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-person-hearts" aria-hidden="true"></i>
             </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-egg-fried" aria-hidden="true"></i>
-              </div>
-              <h3>زيادة الوزن وبناء العضلات</h3>
-              <p>برامج لزيادة الوزن الصحي وتحسين التكوين الجسماني.</p>
+            <h3>تغذية الحمل والرضاعة</h3>
+            <p>نظام يدعم صحتك وصحة الجنين ويمنع زيادة الوزن المفرطة.</p>
+          </div>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-heart-pulse" aria-hidden="true"></i>
             </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-person-hearts" aria-hidden="true"></i>
-              </div>
-              <h3>تغذية الحمل والرضاعة</h3>
-              <p>نظام يدعم صحتك وصحة الجنين ويمنع زيادة الوزن المفرطة.</p>
+            <h3>الأمراض المزمنة</h3>
+            <p>تغذية علاجية للسكر والضغط والكوليسترول والغدة والقولون.</p>
+          </div>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-emoji-smile" aria-hidden="true"></i>
             </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-heart-pulse" aria-hidden="true"></i>
-              </div>
-              <h3>الأمراض المزمنة</h3>
-              <p>تغذية علاجية للسكر والضغط والكوليسترول والغدة والقولون.</p>
+            <h3>تغذية الأطفال</h3>
+            <p>علاج النحافة والسمنة وضعف الشهية عند الأطفال.</p>
+          </div>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-droplet-half" aria-hidden="true"></i>
             </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-emoji-smile" aria-hidden="true"></i>
-              </div>
-              <h3>تغذية الأطفال</h3>
-              <p>علاج النحافة والسمنة وضعف الشهية عند الأطفال.</p>
-            </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-droplet-half" aria-hidden="true"></i>
-              </div>
-              <h3>تحليل مكونات الجسم</h3>
-              <p>قياس دقيق للدهون والعضلات والماء لمتابعة تقدمك.</p>
-            </div>
+            <h3>تحليل مكونات الجسم</h3>
+            <p>قياس دقيق للدهون والعضلات والماء لمتابعة تقدمك.</p>
           </div>
         </div>
-      </section>
-    </main>
-
-    <!-- ============ كيف نعمل ============ -->
-    <main id="how" class="pg" hidden>
-      <div class="ph">
-        <h1><i class="bi bi-signpost-split" aria-hidden="true"></i> كيف نعمل؟</h1>
-        <p>الرئيسية / كيف نعمل</p>
       </div>
-      <section>
-        <div class="container">
-          <div class="grid steps">
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-calendar-check" aria-hidden="true"></i>
-              </div>
-              <h3>احجزي موعدك</h3>
-              <p>تواصلي معنا عبر الواتساب واختاري الوقت المناسب.</p>
+    </section>
+  </main>
+
+  <!-- ============ كيف نعمل ============ -->
+  <main id="how" class="pg" hidden>
+    <div class="ph">
+      <h1><i class="bi bi-signpost-split" aria-hidden="true"></i> كيف نعمل؟</h1>
+      <p>الرئيسية / كيف نعمل</p>
+    </div>
+    <section>
+      <div class="container">
+        <div class="grid steps">
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-calendar-check" aria-hidden="true"></i>
             </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-clipboard2-pulse" aria-hidden="true"></i>
-              </div>
-              <h3>الكشف والتقييم</h3>
-              <p>نقيس الجسم ونراجع تاريخك الصحي وعاداتك الغذائية.</p>
+            <h3>احجزي موعدك</h3>
+            <p>تواصلي معنا عبر الواتساب واختاري الوقت المناسب.</p>
+          </div>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-clipboard2-pulse" aria-hidden="true"></i>
             </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-journal-check" aria-hidden="true"></i>
-              </div>
-              <h3>خطة مخصصة</h3>
-              <p>تستلمين نظاماً مصمماً لكِ بالتفصيل مع بدائل متنوعة.</p>
+            <h3>الكشف والتقييم</h3>
+            <p>نقيس الجسم ونراجع تاريخك الصحي وعاداتك الغذائية.</p>
+          </div>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-journal-check" aria-hidden="true"></i>
             </div>
-            <div class="card rv">
-              <div class="ib">
-                <i class="bi bi-chat-dots" aria-hidden="true"></i>
-              </div>
-              <h3>متابعة مستمرة</h3>
-              <p>نتابع معكِ أسبوعياً ونعدّل الخطة حتى تصلي لهدفك.</p>
+            <h3>خطة مخصصة</h3>
+            <p>تستلمين نظاماً مصمماً لكِ بالتفصيل مع بدائل متنوعة.</p>
+          </div>
+          <div class="card rv">
+            <div class="ib">
+              <i class="bi bi-chat-dots" aria-hidden="true"></i>
             </div>
+            <h3>متابعة مستمرة</h3>
+            <p>نتابع معكِ أسبوعياً ونعدّل الخطة حتى تصلي لهدفك.</p>
           </div>
         </div>
-      </section>
-    </main>
-
-    <!-- ============ الباقات ============ -->
-    <main id="plans" class="pg" hidden>
-      <div class="ph">
-        <h1><i class="bi bi-tags" aria-hidden="true"></i> الباقات</h1>
-        <p>الرئيسية / الباقات</p>
       </div>
-      <section>
-        <div class="container">
-          <div class="grid">
-            <div class="card price rv">
-              <div class="ib">
-                <i class="bi bi-apple" aria-hidden="true"></i>
-              </div>
-              <h3>كشف واستشارة</h3>
-              <div class="n">— ج.م</div>
-              <ul>
-                <li>تقييم شامل للحالة</li>
-                <li>تحليل مكونات الجسم</li>
-                <li>نظام غذائي لمدة أسبوعين</li>
-              </ul>
-              <a class="btn btn-gold" href="#book"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي</a>
+    </section>
+  </main>
+
+  <!-- ============ الباقات ============ -->
+  <main id="plans" class="pg" hidden>
+    <div class="ph">
+      <h1><i class="bi bi-tags" aria-hidden="true"></i> الباقات</h1>
+      <p>الرئيسية / الباقات</p>
+    </div>
+    <section>
+      <div class="container">
+        <div class="grid">
+          <div class="card price rv">
+            <div class="ib">
+              <i class="bi bi-apple" aria-hidden="true"></i>
             </div>
-            <div class="card price hot rv">
-              <div class="ib" style="background: var(--gold)">
-                <i class="bi bi-basket" aria-hidden="true"></i>
-              </div>
-              <h3>باقة شهرية ⭐</h3>
-              <div class="n">— ج.م</div>
-              <ul>
-                <li>كشف + 4 متابعات</li>
-                <li>تعديل النظام أسبوعياً</li>
-                <li>تواصل واتساب مستمر</li>
-              </ul>
-              <a class="btn btn-gold" href="#book"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي</a>
+            <h3>كشف واستشارة</h3>
+            <div class="n">— ج.م</div>
+            <ul>
+              <li>تقييم شامل للحالة</li>
+              <li>تحليل مكونات الجسم</li>
+              <li>نظام غذائي لمدة أسبوعين</li>
+            </ul>
+            <a class="btn btn-gold" href="#book"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي</a>
+          </div>
+          <div class="card price hot rv">
+            <div class="ib" style="background: var(--gold)">
+              <i class="bi bi-basket" aria-hidden="true"></i>
             </div>
-            <div class="card price rv">
-              <div class="ib">
-                <i class="bi bi-egg-fried" aria-hidden="true"></i>
-              </div>
-              <h3>باقة 3 شهور</h3>
-              <div class="n">— ج.م</div>
-              <ul>
-                <li>متابعة كاملة وخصم خاص</li>
-                <li>خطط متجددة</li>
-                <li>أولوية في المواعيد</li>
-              </ul>
-              <a class="btn btn-gold" href="#book"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي</a>
+            <div class="n">— ج.م</div>
+            <ul>
+              <li>كشف + 4 متابعات</li>
+              <li>تعديل النظام أسبوعياً</li>
+              <li>تواصل واتساب مستمر</li>
+            </ul>
+            <a class="btn btn-gold" href="#book"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي</a>
+          </div>
+          <div class="card price rv">
+            <div class="ib">
+              <i class="bi bi-egg-fried" aria-hidden="true"></i>
             </div>
+            <h3>باقة 3 شهور</h3>
+            <div class="n">— ج.م</div>
+            <ul>
+              <li>متابعة كاملة وخصم خاص</li>
+              <li>خطط متجددة</li>
+              <li>أولوية في المواعيد</li>
+            </ul>
+            <a class="btn btn-gold" href="#book"><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي</a>
           </div>
         </div>
-      </section>
-    </main>
-
-    <!-- ============ أسئلة شائعة ============ -->
-    <main id="faq" class="pg" hidden>
-      <div class="ph">
-        <h1><i class="bi bi-question-circle" aria-hidden="true"></i> أسئلة شائعة</h1>
-        <p>الرئيسية / أسئلة شائعة</p>
       </div>
-      <section>
-        <div class="container" style="max-width: 800px">
-          <details class="rv" open>
-            <summary><i class="bi bi-patch-question" aria-hidden="true"></i> هل النظام فيه حرمان؟</summary>
-            <p>لا، الأنظمة متوازنة وتحتوي على بدائل متنوعة تناسب ذوقك.</p>
-          </details>
-          <details class="rv">
-            <summary><i class="bi bi-patch-question" aria-hidden="true"></i> كم مرة تتم المتابعة؟</summary>
-            <p>متابعة أسبوعية، مع إمكانية التواصل عبر الواتساب لأي استفسار.</p>
-          </details>
-          <details class="rv">
-            <summary><i class="bi bi-patch-question" aria-hidden="true"></i> هل يمكن الحجز أونلاين؟</summary>
-            <p>نعم، يمكنك الحجز والمتابعة عن بعد عبر الواتساب.</p>
-          </details>
-          <details class="rv">
-            <summary><i class="bi bi-patch-question" aria-hidden="true"></i> هل الأنظمة مناسبة لمرضى السكر والضغط؟</summary>
-            <p>نعم، يتم تصميم النظام حسب حالتك وتحاليلك الطبية.</p>
-          </details>
-        </div>
-      </section>
-    </main>
+    </section>
+  </main>
 
-    <!-- ============ الحجز ============ -->
-    <main id="book" class="pg book" hidden>
-      <div class="ph">
-        <h1><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي موعدك</h1>
-        <p>الرئيسية / الحجز</p>
+  <!-- ============ أسئلة شائعة ============ -->
+  <main id="faq" class="pg" hidden>
+    <div class="ph">
+      <h1><i class="bi bi-question-circle" aria-hidden="true"></i> أسئلة شائعة</h1>
+      <p>الرئيسية / أسئلة شائعة</p>
+    </div>
+    <section>
+      <div class="container" style="max-width: 800px">
+        <details class="rv" open>
+          <summary><i class="bi bi-patch-question" aria-hidden="true"></i> هل النظام فيه حرمان؟</summary>
+          <p>لا، الأنظمة متوازنة وتحتوي على بدائل متنوعة تناسب ذوقك.</p>
+        </details>
+        <details class="rv">
+          <summary><i class="bi bi-patch-question" aria-hidden="true"></i> كم مرة تتم المتابعة؟</summary>
+          <p>متابعة أسبوعية، مع إمكانية التواصل عبر الواتساب لأي استفسار.</p>
+        </details>
+        <details class="rv">
+          <summary><i class="bi bi-patch-question" aria-hidden="true"></i> هل يمكن الحجز أونلاين؟</summary>
+          <p>نعم، يمكنك الحجز والمتابعة عن بعد عبر الواتساب.</p>
+        </details>
+        <details class="rv">
+          <summary><i class="bi bi-patch-question" aria-hidden="true"></i> هل الأنظمة مناسبة لمرضى السكر والضغط؟
+          </summary>
+          <p>نعم، يتم تصميم النظام حسب حالتك وتحاليلك الطبية.</p>
+        </details>
       </div>
-      <section>
-    <div class="container wrap">
+    </section>
+  </main>
+
+  <!-- ============ الحجز ============ -->
+  <main id="book" class="pg book" hidden>
+    <div class="ph">
+      <h1><i class="bi bi-calendar-check" aria-hidden="true"></i> احجزي موعدك</h1>
+      <p>الرئيسية / الحجز</p>
+    </div>
+    <section>
+      <div class="container wrap">
 
         <div class="rv r">
 
-            <div class="photo" style="max-width: 320px; margin-bottom: 24px">
-                <img
-                    src="img/bookingImg.jpg"
-                    alt="احجزي موعدك"
-                    class="im"
-                >
+          <div class="photo" style="max-width: 320px; margin-bottom: 24px">
+            <img src="img/bookingImg.webp" alt="احجزي موعدك" class="im">
+          </div>
+
+          <h2>
+            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+            احجزي الآن عبر واتساب
+          </h2>
+
+          <p>
+            املأي البيانات وسيتم تحويلك مباشرة إلى واتساب لتأكيد الحجز.
+          </p>
+
+          <div class="info">
+            <div>
+              <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+              العنوان: ضعي عنوان العيادة هنا
             </div>
 
-            <h2>
-                <i class="bi bi-whatsapp" aria-hidden="true"></i>
-                احجزي الآن عبر واتساب
-            </h2>
-
-            <p>
-                املأي البيانات وسيتم تحويلك مباشرة إلى واتساب لتأكيد الحجز.
-            </p>
-
-            <div class="info">
-                <div>
-                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
-                    العنوان: ضعي عنوان العيادة هنا
-                </div>
-
-                <div>
-                    <i class="bi bi-clock-fill" aria-hidden="true"></i>
-                    المواعيد: يومياً من 12 ظهراً حتى 8 مساءً (عدا الجمعة)
-                </div>
-
-                <div>
-                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
-                    واتساب: 01129352754
-                </div>
+            <div>
+              <i class="bi bi-clock-fill" aria-hidden="true"></i>
+              المواعيد: يومياً من 12 ظهراً حتى 8 مساءً (عدا الجمعة)
             </div>
+
+            <div>
+              <i class="bi bi-whatsapp" aria-hidden="true"></i>
+              واتساب: 01129352754
+            </div>
+          </div>
 
         </div>
 
         <form id="f" class="rv l" novalidate>
 
-            <label class="sr-only" for="nm">الاسم بالكامل</label>
-            <div class="field-icon">
-                <i class="bi bi-person" aria-hidden="true"></i>
-                <input
-                    id="nm"
-                    type="text"
-                    placeholder="الاسم بالكامل"
-                    aria-label="الاسم بالكامل"
-                    minlength="2"
-                    maxlength="60"
-                    required
-                />
-            </div>
+          <label class="sr-only" for="nm">الاسم بالكامل</label>
+          <div class="field-icon">
+            <i class="bi bi-person" aria-hidden="true"></i>
+            <input id="nm" type="text" placeholder="الاسم بالكامل" aria-label="الاسم بالكامل" minlength="2"
+              maxlength="60" required />
+          </div>
 
-            <label class="sr-only" for="ph">رقم الموبايل</label>
-            <div class="field-icon">
-                <i class="bi bi-telephone" aria-hidden="true"></i>
-                <input
-                    id="ph"
-                    type="tel"
-                    placeholder="رقم الموبايل"
-                    aria-label="رقم الموبايل"
-                    inputmode="tel"
-                    maxlength="16"
-                    required
-                />
-            </div>
+          <label class="sr-only" for="ph">رقم الموبايل</label>
+          <div class="field-icon">
+            <i class="bi bi-telephone" aria-hidden="true"></i>
+            <input id="ph" type="tel" placeholder="رقم الموبايل" aria-label="رقم الموبايل" inputmode="tel"
+              maxlength="16" required />
+          </div>
 
-            <label class="sr-only" for="sv">الخدمة المطلوبة</label>
-            <div class="field-icon">
-                <i class="bi bi-list-check" aria-hidden="true"></i>
-                <select id="sv" aria-label="الخدمة المطلوبة" required>
-                    <option>إنقاص الوزن</option>
-                    <option>زيادة الوزن</option>
-                    <option>تغذية الحمل والرضاعة</option>
-                    <option>الأمراض المزمنة</option>
-                    <option>تغذية الأطفال</option>
-                    <option>أخرى</option>
-                </select>
-            </div>
+          <label class="sr-only" for="sv">الخدمة المطلوبة</label>
+          <div class="field-icon">
+            <i class="bi bi-list-check" aria-hidden="true"></i>
+            <select id="sv" aria-label="الخدمة المطلوبة" required>
+              <option>إنقاص الوزن</option>
+              <option>زيادة الوزن</option>
+              <option>تغذية الحمل والرضاعة</option>
+              <option>الأمراض المزمنة</option>
+              <option>تغذية الأطفال</option>
+              <option>أخرى</option>
+            </select>
+          </div>
 
-            <label class="sr-only" for="dt">التاريخ المفضل</label>
-            <div class="field-icon date-field">
-                <i class="bi bi-calendar3" aria-hidden="true"></i>
-                <input
-                    id="dt"
-                    type="date"
-                    class="date-input"
-                    aria-label="التاريخ المفضل"
-                    aria-describedby="bookingDateHint"
-                    required
-                />
-            </div>
-            <p class="validation-hint" id="bookingDateHint">تاريخ الحجز مطلوب، اختاري اليوم أو موعداً قادماً.</p>
+          <label class="sr-only" for="dt">التاريخ المفضل</label>
+          <div class="field-icon date-field">
+            <i class="bi bi-calendar3" aria-hidden="true"></i>
+            <input id="dt" type="date" class="date-input" aria-label="التاريخ المفضل" aria-describedby="bookingDateHint"
+              required />
+          </div>
+          <p class="validation-hint" id="bookingDateHint">تاريخ الحجز مطلوب، اختاري اليوم أو موعداً قادماً.</p>
 
-            <label class="sr-only" for="ms">ملاحظات اختيارية</label>
-            <div class="field-icon">
-                <i class="bi bi-chat-left-text" aria-hidden="true"></i>
-                <textarea
-                    id="ms"
-                    rows="3"
-                    placeholder="ملاحظات (اختياري)"
-                    aria-label="ملاحظات اختيارية"
-                    maxlength="2000"
-                ></textarea>
-            </div>
+          <label class="sr-only" for="ms">ملاحظات اختيارية</label>
+          <div class="field-icon">
+            <i class="bi bi-chat-left-text" aria-hidden="true"></i>
+            <textarea id="ms" rows="3" placeholder="ملاحظات (اختياري)" aria-label="ملاحظات اختيارية"
+              maxlength="2000"></textarea>
+          </div>
 
-            <button class="btn btn-wa" type="submit">
-                <i class="bi bi-whatsapp" aria-hidden="true"></i>
-                احجزي عبر واتساب
-            </button>
+          <button class="btn btn-wa" type="submit">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+            احجزي عبر واتساب
+          </button>
 
         </form>
 
-    </div>
-</section>
-    </main>
-
-    <footer>
-      <div class="container">
-        <i class="bi bi-c-circle" aria-hidden="true"></i> جميع الحقوق محفوظة © <span id="y"></span>
-        <b>عيادة د. إيمان شامة</b> للتغذية العلاجية
-        <div class="footer-credit">
-          <i class="bi bi-code-slash" aria-hidden="true"></i>
-          <span>تم العمل بواسطة <strong dir="ltr">Rief Code</strong></span>
-        </div>
       </div>
-    </footer>
-    <a class="fwa" id="fwa" target="_blank" rel="noopener" aria-label="واتساب"
-      ><i class="bi bi-whatsapp" aria-hidden="true"></i></a
-    >
+    </section>
+  </main>
 
-    <script>
-      // غيّري رقم الواتساب هنا (صيغة دولية بدون + أو أصفار)
-      const WA = "201129352754";
-      const $ = (s) => document.querySelector(s),
-        $$ = (s) => [...document.querySelectorAll(s)];
-      const localDateValue = (date) => {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, "0");
-        const day = String(date.getDate()).padStart(2, "0");
-        return `${year}-${month}-${day}`;
-      };
-      $("#y").textContent = new Date().getFullYear();
-      $("#fwa").href =
-        `https://wa.me/${WA}?text=${encodeURIComponent("السلام عليكم، أريد الحجز في عيادة د. إيمان شامة")}`;
-      const bookingForm = $("#f");
-      const bookingName = $("#nm");
-      const bookingPhone = $("#ph");
-      const bookingDate = $("#dt");
-      bookingDate.min = localDateValue(new Date());
+  <footer>
+    <div class="container">
+      <i class="bi bi-c-circle" aria-hidden="true"></i> جميع الحقوق محفوظة © <span id="y"></span>
+      <b>عيادة د. إيمان شامة</b> للتغذية العلاجية
+      <div class="footer-credit">
+        <i class="bi bi-code-slash" aria-hidden="true"></i>
+        <span>تم العمل بواسطة <strong dir="ltr">Rief Code</strong></span>
+      </div>
+    </div>
+  </footer>
+  <a class="fwa" id="fwa" target="_blank" rel="noopener" aria-label="واتساب"><i class="bi bi-whatsapp"
+      aria-hidden="true"></i></a>
 
-      function validateBookingField(field) {
-        field.setCustomValidity("");
-        const value = field.value.trim();
-
-        if (field === bookingName && value && !/^[A-Za-z\u0600-\u06FF][A-Za-z\u0600-\u06FF\s'-]{1,59}$/.test(value)) {
-          field.setCustomValidity("اكتبي الاسم بحروف عربية أو إنجليزية فقط.");
-        }
-
-        if (field === bookingPhone && value) {
-          let phone = value
-            .replace(/[٠-٩]/g, (digit) => String(digit.charCodeAt(0) - 0x660))
-            .replace(/[۰-۹]/g, (digit) => String(digit.charCodeAt(0) - 0x6f0))
-            .replace(/[\s()-]/g, "");
-          phone = phone.replace(/^(?:\+20|0020)/, "0");
-          if (!/^01[0125]\d{8}$/.test(phone)) {
-            field.setCustomValidity("أدخلي رقم موبايل مصرياً صحيحاً مكوّناً من 11 رقماً.");
-          }
-        }
-
-        if (field === bookingDate && value && value < bookingDate.min) {
-          field.setCustomValidity("اختاري تاريخ اليوم أو تاريخاً قادماً.");
-        }
-      }
-
-      [bookingName, bookingPhone, bookingDate].forEach((field) => {
-        field.addEventListener("input", () => validateBookingField(field));
-        field.addEventListener("change", () => validateBookingField(field));
-      });
-
-      const nav = $("#nav"),
-        pages = $$(".pg"),
-        lks = $$("#lk a:not(.btn)");
-      let cur = "home";
-      function route() {
-        let h = location.hash.slice(1) || "home";
-        if (!pages.some((p) => p.id === h)) h = "home";
-        cur = h;
-        pages.forEach((p) => (p.hidden = p.id !== h));
-        lks.forEach((a) =>
-          a.classList.toggle("act", a.getAttribute("href") === "#" + h),
-        );
-        $("#lk").classList.remove("o");
-        scrollTo(0, 0);
-        navState();
-        if (h === "home") go(i);
-      }
-      function navState() {
-        nav.classList.toggle("sc", scrollY > 60 || cur !== "home");
-      }
-      addEventListener("scroll", navState);
-      addEventListener("hashchange", route);
-      $("#bg").onclick = () => $("#lk").classList.toggle("o");
-
-      // slider
-      const slides = $$(".slide"),
-        dots = $("#dots"),
-        bar = $("#bar"),
-        T = 6000;
-      let i = 0,
-        timer;
-      slides.forEach((_, k) => {
-        const b = document.createElement("button");
-        b.onclick = () => go(k);
-        dots.append(b);
-      });
-      function go(n) {
-        i = (n + slides.length) % slides.length;
-        slides.forEach((s, k) => s.classList.toggle("on", k === i));
-        [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i));
-        bar.style.transition = "none";
-        bar.style.width = "0";
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => {
-            bar.style.transition = `width ${T}ms linear`;
-            bar.style.width = "100%";
-          }),
-        );
-        clearInterval(timer);
-        timer = setInterval(() => go(i + 1), T);
-      }
-      $("#nx").onclick = () => go(i + 1);
-      $("#pv").onclick = () => go(i - 1);
-
-      // scroll animations + counters
-      const io = new IntersectionObserver(
-        (es) =>
-          es.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add("in");
-              io.unobserve(e.target);
-            }
-          }),
-        { threshold: 0.15 },
-      );
-      $$(".rv").forEach((el, k) => {
-        el.style.transitionDelay = (k % 3) * 120 + "ms";
-        io.observe(el);
-      });
-      const co = new IntersectionObserver(
-        (es) =>
-          es.forEach((e) => {
-            if (!e.isIntersecting) return;
-            const el = e.target,
-              end = +el.dataset.n,
-              st = performance.now();
-            (function f(t) {
-              const p = Math.min((t - st) / 1600, 1);
-              el.textContent = Math.floor(end * p).toLocaleString("ar-EG");
-              if (p < 1) requestAnimationFrame(f);
-            })(st);
-            co.unobserve(el);
-          }),
-        { threshold: 0.5 },
-      );
-      $$("[data-n]").forEach((el) => co.observe(el));
-
-      // testimonials
-      const q = $$("#tst blockquote");
-      let qi = 0;
-      setInterval(() => {
-        q[qi].classList.remove("on");
-        qi = (qi + 1) % q.length;
-        q[qi].classList.add("on");
-      }, 4500);
-
-      // booking via WhatsApp
-      bookingForm.onsubmit = (e) => {
-        e.preventDefault();
-        bookingForm.classList.add("was-validated");
-        [bookingName, bookingPhone, bookingDate].forEach(validateBookingField);
-        if (!bookingForm.reportValidity()) return;
-
-        const msg = `السلام عليكم، أريد حجز موعد في عيادة د. إيمان شامة\n\nالاسم: ${bookingName.value.trim()}\nالموبايل: ${bookingPhone.value.trim()}\nالخدمة: ${$("#sv").value}\nتاريخ الحجز: ${bookingDate.value}\nملاحظات: ${$("#ms").value.trim() || "—"}`;
-        open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
-      };
-      go(0);
-      route();
-    </script>
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const $ = id => document.getElementById(id);
-  const ar = n => Number(n).toLocaleString('ar-EG', { useGrouping: false });
-  const historyKey = 'emanShamaCalorieHistory';
-  let gender = null;
-  let result = null;
-
-  const modalEl = $('ccModal');
-  const man = $('ccMan');
-  const historyList = $('ccHistoryList');
-  const historyStatus = $('ccHistoryStatus');
-  const historyContent = $('ccHistoryContent');
-  const historyToggle = $('ccHistoryToggle');
-  const clearHistoryButton = $('ccHistoryClear');
-  let calorieHistory = [];
-
-  historyToggle.addEventListener('click', () => {
-    const isExpanded = historyToggle.getAttribute('aria-expanded') === 'true';
-    historyToggle.setAttribute('aria-expanded', String(!isExpanded));
-    historyContent.hidden = isExpanded;
-    historyToggle.innerHTML = isExpanded
-      ? '<i class="bi bi-eye" aria-hidden="true"></i> عرض السجل'
-      : '<i class="bi bi-eye-slash" aria-hidden="true"></i> إخفاء السجل';
-  });
-
-  function showHistoryStatus(message) {
-    historyStatus.textContent = message;
-    historyStatus.hidden = !message;
-  }
-
-  function renderHistory() {
-    historyList.replaceChildren();
-    clearHistoryButton.hidden = calorieHistory.length === 0;
-
-    if (calorieHistory.length === 0) {
-      const empty = document.createElement('li');
-      empty.className = 'cc-history-empty';
-      empty.textContent = 'ستظهر حساباتك هنا بعد إجراء أول حساب.';
-      historyList.append(empty);
-      return;
-    }
-
-    calorieHistory.forEach(entry => {
-      const item = document.createElement('li');
-      item.className = 'cc-history-item';
-
-      const head = document.createElement('div');
-      head.className = 'cc-history-item-head';
-      const calories = document.createElement('strong');
-      calories.className = 'cc-history-cal';
-      calories.textContent = `${ar(entry.cal)} سعرة / يوم`;
-      const date = document.createElement('time');
-      date.className = 'cc-history-date';
-      date.dateTime = entry.createdAt;
-      date.textContent = new Intl.DateTimeFormat('ar-EG', {
-        dateStyle: 'medium',
-        timeStyle: 'short'
-      }).format(new Date(entry.createdAt));
-      head.append(calories, date);
-
-      const meta = document.createElement('div');
-      meta.className = 'cc-history-meta';
-      const goal = document.createElement('span');
-      goal.textContent = `الهدف: ${entry.goalLabel}`;
-      const bmi = document.createElement('span');
-      bmi.textContent = `مؤشر كتلة الجسم: ${ar(entry.bmi)}`;
-      const bmr = document.createElement('span');
-      bmr.textContent = `الأيض الأساسي: ${ar(entry.bmr)} سعرة`;
-      const tdee = document.createElement('span');
-      tdee.textContent = `احتياج الحفاظ: ${ar(entry.tdee)} سعرة`;
-      const macros = document.createElement('span');
-      macros.textContent = `بروتين ${ar(entry.grams[0])} جم · كربوهيدرات ${ar(entry.grams[1])} جم · دهون ${ar(entry.grams[2])} جم`;
-      meta.append(goal, bmi, bmr, tdee, macros);
-      item.append(head, meta);
-      historyList.append(item);
-    });
-  }
-
-  try {
-    const savedHistory = localStorage.getItem(historyKey);
-    if (savedHistory) {
-      const parsedHistory = JSON.parse(savedHistory);
-      if (!Array.isArray(parsedHistory)) {
-        throw new TypeError('Saved calorie history is not an array.');
-      }
-      calorieHistory = parsedHistory.filter(entry =>
-        entry &&
-        Number.isFinite(entry.cal) &&
-        Number.isFinite(entry.bmi) &&
-        Number.isFinite(entry.bmr) &&
-        Number.isFinite(entry.tdee) &&
-        Array.isArray(entry.grams) &&
-        entry.grams.length === 3 &&
-        entry.grams.every(Number.isFinite) &&
-        typeof entry.goalLabel === 'string' &&
-        typeof entry.createdAt === 'string' &&
-        !Number.isNaN(Date.parse(entry.createdAt))
-      );
-    }
-  } catch (error) {
-    console.error('Unable to load calorie history from local storage.', error);
-    showHistoryStatus('تعذر تحميل سجل الحسابات المحفوظ على هذا الجهاز.');
-  }
-  renderHistory();
-
-  clearHistoryButton.addEventListener('click', () => {
-    try {
-      localStorage.removeItem(historyKey);
-      calorieHistory = [];
-      showHistoryStatus('');
-      renderHistory();
-    } catch (error) {
-      console.error('Unable to clear calorie history from local storage.', error);
-      showHistoryStatus('تعذر مسح السجل المحفوظ. حاولي مرة أخرى.');
-    }
-  });
-
-  function saveCalculation(entry) {
-    calorieHistory.unshift(entry);
-    try {
-      localStorage.setItem(historyKey, JSON.stringify(calorieHistory));
-      showHistoryStatus('');
-    } catch (error) {
-      console.error('Unable to save calorie calculation to local storage.', error);
-      showHistoryStatus('تعذر حفظ الحساب في سجل هذا الجهاز، لكن يمكنك متابعة النتيجة.');
-    }
-    renderHistory();
-  }
-
-  /* ---------- تحميل مسبق للصورتين ---------- */
-  [man.dataset.male, man.dataset.female].forEach(src => { const i = new Image(); i.src = src; });
-
-  /* ---------- اختيار النوع + تغيير الصورة ---------- */
-  document.querySelectorAll('.cc-g').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.cc-g').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      gender = btn.dataset.g;
-
-      const newSrc = gender === 'female' ? man.dataset.female : man.dataset.male;
-      if (man.dataset.current === newSrc) return;
-      man.dataset.current = newSrc;
-
-      man.classList.add('swap');
-      setTimeout(() => {
-        man.src = newSrc;
-        man.classList.remove('swap');
-      }, 250);
-    });
-  });
-
-  const today = new Date();
-  $('ccDob').max = [
-    today.getFullYear(),
-    String(today.getMonth() + 1).padStart(2, '0'),
-    String(today.getDate()).padStart(2, '0')
-  ].join('-');
-
-  function showErr(msg) {
-    const e = $('ccErr');
-    e.textContent = msg;
-    e.hidden = false;
-  }
-
-  function calcAge(dobStr) {
-    const dob = new Date(dobStr), now = new Date();
-    let age = now.getFullYear() - dob.getFullYear();
-    const m = now.getMonth() - dob.getMonth();
-    if (m < 0 || (m === 0 && now.getDate() < dob.getDate())) age--;
-    return age;
-  }
-
-  function countUp(el, target, dur) {
-    const start = performance.now();
-    (function step(t) {
-      const p = Math.min((t - start) / dur, 1);
-      el.textContent = ar(Math.round(target * p));
-      if (p < 1) requestAnimationFrame(step);
-    })(start);
-  }
-
-  /* ---------- فتح / قفل الـ Pop-up ---------- */
-  function openModal() {
-    modalEl.classList.add('show');
-    modalEl.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('cm-lock');
-    modalEl.querySelector('.cm-dialog').scrollTop = 0;
-
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      modalEl.classList.add('open');
-      // أنيميشن النتيجة
-      countUp($('cmCal'), result.cal, 1400);
-      const ratio = Math.min(result.cal / 3500, 1);
-      $('cmProg').style.strokeDasharray = (377 * ratio) + ' 503';
-      ['cmPrB', 'cmCaB', 'cmFaB'].forEach((id, i) => $(id).style.width = result.macros[i] + '%');
-    }));
-  }
-
-  function closeModal() {
-    modalEl.classList.remove('open');
-    modalEl.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('cm-lock');
-    setTimeout(() => modalEl.classList.remove('show'), 300);
-  }
-
-  $('cmClose').addEventListener('click', closeModal);
-  $('cmRedo').addEventListener('click', function () {
-    closeModal();
-    $('calc').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-  $('cmCta').addEventListener('click', function (event) {
-    event.preventDefault();
-    const notes = $('ms');
-    const calculationDate = new Intl.DateTimeFormat('ar-EG', {
-      dateStyle: 'medium',
-      timeStyle: 'short'
-    }).format(new Date(result.createdAt));
-    const summary = [
-      'نتيجة حساب السعرات:',
-      `السعرات اليومية: ${ar(result.cal)} سعرة`,
-      `الهدف: ${result.goalLabel}`,
-      `معدل الأيض الأساسي: ${ar(result.bmr)} سعرة`,
-      `احتياج الحفاظ على الوزن: ${ar(result.tdee)} سعرة`,
-      `مؤشر كتلة الجسم: ${ar(result.bmi)} (${result.bmiLabel})`,
-      `بروتين: ${ar(result.grams[0])} جم، كربوهيدرات: ${ar(result.grams[1])} جم، دهون: ${ar(result.grams[2])} جم`,
-      `تاريخ الحساب: ${calculationDate}`
-    ].join('\n');
-    const previousSummary = bookingForm.dataset.calorieSummary || '';
-    const existingNotes = notes.value
-      .replace(previousSummary, '')
-      .replace(/(?:^|\r?\n)[ \t]*نتيجة حساب السعرات:[\s\S]*?^[ \t]*تاريخ الحساب:[^\r\n]*/gm, '')
-      .replace(/\n{3,}/g, '\n\n')
-      .trim();
-    const updatedNotes = existingNotes ? `${existingNotes}\n\n${summary}` : summary;
-    notes.maxLength = Math.max(notes.maxLength, updatedNotes.length);
-    notes.value = updatedNotes;
-    bookingForm.dataset.calorieSummary = summary;
-    closeModal();
-    location.hash = 'book';
-  });
-  modalEl.addEventListener('click', e => { if (e.target === modalEl) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modalEl.classList.contains('show')) closeModal(); });
-
-  /* ---------- الحساب ---------- */
-  $('ccForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    this.classList.add('was-validated');
-    $('ccErr').hidden = true;
-
-    const dob = $('ccDob').value;
-    const h = parseFloat($('ccH').value);
-    const w = parseFloat($('ccW').value);
-    const act = parseFloat($('ccAct').value);
-    const goal = $('ccGoal').value;
-    const med = $('ccMed').value;
-
-    if (!gender) return showErr('من فضلك اختر النوع');
-    if (!dob) return showErr('من فضلك أدخل تاريخ الميلاد');
-    const age = calcAge(dob);
-    if (isNaN(age) || age < 10 || age > 100) return showErr('تاريخ الميلاد غير صحيح');
-    if (!h || h < 100 || h > 250) return showErr('أدخل طولاً صحيحاً بالسنتيمتر (100 - 250)');
-    if (!w || w < 25 || w > 300) return showErr('أدخل وزناً صحيحاً بالكيلوجرام (25 - 300)');
-    if (!act) return showErr('من فضلك اختر مستوى النشاط');
-    if (!goal) return showErr('من فضلك اختر هدفك الصحي');
-    if (!this.reportValidity()) return;
-
-    // 1) معدل الأيض الأساسي (Mifflin-St Jeor)
-    const bmr = 10 * w + 6.25 * h - 5 * age + (gender === 'male' ? 5 : -161);
-
-    // 2) الاحتياج اليومي للحفاظ على الوزن
-    const tdee = bmr * act;
-
-    // 3) تعديل حسب الهدف
-    let cal = tdee;
-    if (goal === 'lose') cal = tdee - 500;
-    if (goal === 'gain') cal = tdee + 400;
-    const minCal = gender === 'male' ? 1500 : 1200;
-    if (cal < minCal) cal = minCal;
-    cal = Math.round(cal);
-
-    // 4) الماكروز (بروتين / كارب / دهون)
-    let macros = [25, 50, 25];
-    if (goal === 'lose' || med === 'diabetes') macros = [30, 40, 30];
-    const grams = [
-      Math.round(cal * macros[0] / 100 / 4),
-      Math.round(cal * macros[1] / 100 / 4),
-      Math.round(cal * macros[2] / 100 / 9)
-    ];
-
-    // 5) BMI
-    const bmi = w / Math.pow(h / 100, 2);
-    let bmiTx = 'وزن طبيعي';
-    if (bmi < 18.5) bmiTx = 'نحافة';
-    else if (bmi >= 25 && bmi < 30) bmiTx = 'زيادة وزن';
-    else if (bmi >= 30) bmiTx = 'سمنة';
-
-    // 6) نصائح يومية
-    const baseSteps = { 1.2: 6000, 1.375: 8000, 1.55: 10000, 1.725: 12000, 1.9: 15000 }[act] || 8000;
-    const steps = Math.min(baseSteps + (goal === 'lose' ? 2000 : 0), 15000);
-    const sleep = age < 18 ? 9 : 8;
-    const water = (w * 0.035).toFixed(1);
-
-    const goalLabel = {
-      lose: 'إنقاص الوزن',
-      maintain: 'تثبيت الوزن',
-      gain: 'زيادة الوزن'
-    }[goal];
-    const bmiRounded = Number(bmi.toFixed(1));
-    result = {
-      cal,
-      macros,
-      bmr: Math.round(bmr),
-      tdee: Math.round(tdee),
-      bmi: bmiRounded,
-      bmiLabel: bmiTx,
-      grams,
-      goal,
-      goalLabel,
-      createdAt: new Date().toISOString()
+  <script>
+    // غيّري رقم الواتساب هنا (صيغة دولية بدون + أو أصفار)
+    const WA = "201129352754";
+    const $ = (s) => document.querySelector(s),
+      $$ = (s) => [...document.querySelectorAll(s)];
+    const localDateValue = (date) => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
     };
-    saveCalculation({
-      cal,
-      bmi: bmiRounded,
-      bmr: result.bmr,
-      tdee: result.tdee,
-      grams,
-      goalLabel,
-      createdAt: result.createdAt
-    });
+    $("#y").textContent = new Date().getFullYear();
+    $("#fwa").href =
+      `https://wa.me/${WA}?text=${encodeURIComponent("السلام عليكم، أريد الحجز في عيادة د. إيمان شامة")}`;
+    const bookingForm = $("#f");
+    const bookingName = $("#nm");
+    const bookingPhone = $("#ph");
+    const bookingDate = $("#dt");
+    bookingDate.min = localDateValue(new Date());
 
-    // ---------- تعبئة الـ Pop-up ----------
-    $('cmGoal').textContent = { lose: 'لإنقاص الوزن بشكل صحي', maintain: 'للحفاظ على وزنك الحالي', gain: 'لزيادة الوزن بشكل صحي' }[goal];
-    $('cmBmr').textContent = ar(Math.round(bmr));
-    $('cmTdee').textContent = ar(Math.round(tdee));
-    $('cmBmi').textContent = ar(bmi.toFixed(1));
-    $('cmBmiTx').textContent = 'BMI · ' + bmiTx;
+    function validateBookingField(field) {
+      field.setCustomValidity("");
+      const value = field.value.trim();
 
-    $('cmPrG').textContent = ar(grams[0]) + ' جم';
-    $('cmCaG').textContent = ar(grams[1]) + ' جم';
-    $('cmFaG').textContent = ar(grams[2]) + ' جم';
-    $('cmPrP').textContent = ar(macros[0]) + '٪ من السعرات';
-    $('cmCaP').textContent = ar(macros[1]) + '٪ من السعرات';
-    $('cmFaP').textContent = ar(macros[2]) + '٪ من السعرات';
+      if (field === bookingName && value && !/^[A-Za-z\u0600-\u06FF][A-Za-z\u0600-\u06FF\s'-]{1,59}$/.test(value)) {
+        field.setCustomValidity("اكتبي الاسم بحروف عربية أو إنجليزية فقط.");
+      }
 
-    $('cmSteps').textContent = ar(steps) + ' خطوة يومياً';
-    $('cmSleep').textContent = 'النوم ' + ar(sleep) + ' ساعات';
-    $('cmBurn').textContent = 'تناول ' + ar(cal) + ' سعرة حرارية';
-    $('cmWater').textContent = 'شرب ' + ar(water) + ' لتر ماء';
+      if (field === bookingPhone && value) {
+        let phone = value
+          .replace(/[٠-٩]/g, (digit) => String(digit.charCodeAt(0) - 0x660))
+          .replace(/[۰-۹]/g, (digit) => String(digit.charCodeAt(0) - 0x6f0))
+          .replace(/[\s()-]/g, "");
+        phone = phone.replace(/^(?:\+20|0020)/, "0");
+        if (!/^01[0125]\d{8}$/.test(phone)) {
+          field.setCustomValidity("أدخلي رقم موبايل مصرياً صحيحاً مكوّناً من 11 رقماً.");
+        }
+      }
 
-    const note = $('cmNote');
-    if (med !== 'none') {
-      note.innerHTML = '<i class="bi bi-info-circle"></i> الأرقام استرشادية، ولوجود حالة طبية يُفضّل حجز استشارة للحصول على برنامج غذائي مناسب لحالتك.';
-      note.hidden = false;
-    } else {
-      note.hidden = true;
+      if (field === bookingDate && value && value < bookingDate.min) {
+        field.setCustomValidity("اختاري تاريخ اليوم أو تاريخاً قادماً.");
+      }
     }
 
-    // تصفير الأنيميشن ثم الفتح
-    $('cmCal').textContent = ar(0);
-    $('cmProg').style.strokeDasharray = '0 503';
-    ['cmPrB', 'cmCaB', 'cmFaB'].forEach(id => $(id).style.width = '0%');
+    [bookingName, bookingPhone, bookingDate].forEach((field) => {
+      field.addEventListener("input", () => validateBookingField(field));
+      field.addEventListener("change", () => validateBookingField(field));
+    });
 
-    openModal();
-  });
-});
-</script>
-  </body>
+    const nav = $("#nav"),
+      pages = $$(".pg"),
+      lks = $$("#lk a:not(.btn)");
+    let cur = "home";
+    function route() {
+      let h = location.hash.slice(1) || "home";
+      if (!pages.some((p) => p.id === h)) h = "home";
+      cur = h;
+      pages.forEach((p) => (p.hidden = p.id !== h));
+      lks.forEach((a) =>
+        a.classList.toggle("act", a.getAttribute("href") === "#" + h),
+      );
+      closeMenu();
+      scrollTo(0, 0);
+      navState();
+      if (h === "home") go(i);
+    }
+    function navState() {
+      nav.classList.toggle("sc", scrollY > 60 || cur !== "home");
+    }
+    addEventListener("scroll", navState);
+    addEventListener("hashchange", route);
+    const menu = $("#lk"),
+      menuToggle = $("#bg");
+    function setMenuOpen(open) {
+      menu.classList.toggle("o", open);
+      nav.classList.toggle("menu-open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
+    }
+    function closeMenu() {
+      setMenuOpen(false);
+    }
+    menuToggle.onclick = () => setMenuOpen(!menu.classList.contains("o"));
+    $("#menuClose").onclick = closeMenu;
+    document.addEventListener("click", (event) => {
+      if (
+        menu.classList.contains("o") &&
+        !menu.contains(event.target) &&
+        !menuToggle.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    // slider
+    const slides = $$(".slide"),
+      dots = $("#dots"),
+      bar = $("#bar"),
+      T = 6000;
+    let i = 0,
+      timer;
+    slides.forEach((_, k) => {
+      const b = document.createElement("button");
+      b.onclick = () => go(k);
+      dots.append(b);
+    });
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle("on", k === i));
+      [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i));
+      bar.style.transition = "none";
+      bar.style.width = "0";
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          bar.style.transition = `width ${T}ms linear`;
+          bar.style.width = "100%";
+        }),
+      );
+      clearInterval(timer);
+      timer = setInterval(() => go(i + 1), T);
+    }
+    $("#nx").onclick = () => go(i + 1);
+    $("#pv").onclick = () => go(i - 1);
+
+    // scroll animations + counters
+    const io = new IntersectionObserver(
+      (es) =>
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.15 },
+    );
+    $$(".rv").forEach((el, k) => {
+      el.style.transitionDelay = (k % 3) * 120 + "ms";
+      io.observe(el);
+    });
+    const co = new IntersectionObserver(
+      (es) =>
+        es.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target,
+            end = +el.dataset.n,
+            st = performance.now();
+          (function f(t) {
+            const p = Math.min((t - st) / 1600, 1);
+            el.textContent = Math.floor(end * p).toLocaleString("ar-EG");
+            if (p < 1) requestAnimationFrame(f);
+          })(st);
+          co.unobserve(el);
+        }),
+      { threshold: 0.5 },
+    );
+    $$("[data-n]").forEach((el) => co.observe(el));
+
+    // testimonials
+    const q = $$("#tst blockquote");
+    let qi = 0;
+    setInterval(() => {
+      q[qi].classList.remove("on");
+      qi = (qi + 1) % q.length;
+      q[qi].classList.add("on");
+    }, 4500);
+
+    // booking via WhatsApp
+    bookingForm.onsubmit = (e) => {
+      e.preventDefault();
+      bookingForm.classList.add("was-validated");
+      [bookingName, bookingPhone, bookingDate].forEach(validateBookingField);
+      if (!bookingForm.reportValidity()) return;
+
+      const msg = `السلام عليكم، أريد حجز موعد في عيادة د. إيمان شامة\n\nالاسم: ${bookingName.value.trim()}\nالموبايل: ${bookingPhone.value.trim()}\nالخدمة: ${$("#sv").value}\nتاريخ الحجز: ${bookingDate.value}\nملاحظات: ${$("#ms").value.trim() || "—"}`;
+      open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
+    };
+    go(0);
+    route();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const $ = id => document.getElementById(id);
+      const ar = n => Number(n).toLocaleString('ar-EG', { useGrouping: false });
+      const historyKey = 'emanShamaCalorieHistory';
+      let gender = null;
+      let result = null;
+
+      const modalEl = $('ccModal');
+      const man = $('ccMan');
+      const historyList = $('ccHistoryList');
+      const historyStatus = $('ccHistoryStatus');
+      const historyContent = $('ccHistoryContent');
+      const historyToggle = $('ccHistoryToggle');
+      const clearHistoryButton = $('ccHistoryClear');
+      let calorieHistory = [];
+
+      historyToggle.addEventListener('click', () => {
+        const isExpanded = historyToggle.getAttribute('aria-expanded') === 'true';
+        historyToggle.setAttribute('aria-expanded', String(!isExpanded));
+        historyContent.hidden = isExpanded;
+        historyToggle.innerHTML = isExpanded
+          ? '<i class="bi bi-eye" aria-hidden="true"></i> عرض السجل'
+          : '<i class="bi bi-eye-slash" aria-hidden="true"></i> إخفاء السجل';
+      });
+
+      function showHistoryStatus(message) {
+        historyStatus.textContent = message;
+        historyStatus.hidden = !message;
+      }
+
+      function renderHistory() {
+        historyList.replaceChildren();
+        clearHistoryButton.hidden = calorieHistory.length === 0;
+
+        if (calorieHistory.length === 0) {
+          const empty = document.createElement('li');
+          empty.className = 'cc-history-empty';
+          empty.textContent = 'ستظهر حساباتك هنا بعد إجراء أول حساب.';
+          historyList.append(empty);
+          return;
+        }
+
+        calorieHistory.forEach(entry => {
+          const item = document.createElement('li');
+          item.className = 'cc-history-item';
+
+          const head = document.createElement('div');
+          head.className = 'cc-history-item-head';
+          const calories = document.createElement('strong');
+          calories.className = 'cc-history-cal';
+          calories.textContent = `${ar(entry.cal)} سعرة / يوم`;
+          const date = document.createElement('time');
+          date.className = 'cc-history-date';
+          date.dateTime = entry.createdAt;
+          date.textContent = new Intl.DateTimeFormat('ar-EG', {
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          }).format(new Date(entry.createdAt));
+          head.append(calories, date);
+
+          const meta = document.createElement('div');
+          meta.className = 'cc-history-meta';
+          const goal = document.createElement('span');
+          goal.textContent = `الهدف: ${entry.goalLabel}`;
+          const bmi = document.createElement('span');
+          bmi.textContent = `مؤشر كتلة الجسم: ${ar(entry.bmi)}`;
+          const bmr = document.createElement('span');
+          bmr.textContent = `الأيض الأساسي: ${ar(entry.bmr)} سعرة`;
+          const tdee = document.createElement('span');
+          tdee.textContent = `احتياج الحفاظ: ${ar(entry.tdee)} سعرة`;
+          const macros = document.createElement('span');
+          macros.textContent = `بروتين ${ar(entry.grams[0])} جم · كربوهيدرات ${ar(entry.grams[1])} جم · دهون ${ar(entry.grams[2])} جم`;
+          meta.append(goal, bmi, bmr, tdee, macros);
+          item.append(head, meta);
+          historyList.append(item);
+        });
+      }
+
+      try {
+        const savedHistory = localStorage.getItem(historyKey);
+        if (savedHistory) {
+          const parsedHistory = JSON.parse(savedHistory);
+          if (!Array.isArray(parsedHistory)) {
+            throw new TypeError('Saved calorie history is not an array.');
+          }
+          calorieHistory = parsedHistory.filter(entry =>
+            entry &&
+            Number.isFinite(entry.cal) &&
+            Number.isFinite(entry.bmi) &&
+            Number.isFinite(entry.bmr) &&
+            Number.isFinite(entry.tdee) &&
+            Array.isArray(entry.grams) &&
+            entry.grams.length === 3 &&
+            entry.grams.every(Number.isFinite) &&
+            typeof entry.goalLabel === 'string' &&
+            typeof entry.createdAt === 'string' &&
+            !Number.isNaN(Date.parse(entry.createdAt))
+          );
+        }
+      } catch (error) {
+        console.error('Unable to load calorie history from local storage.', error);
+        showHistoryStatus('تعذر تحميل سجل الحسابات المحفوظ على هذا الجهاز.');
+      }
+      renderHistory();
+
+      clearHistoryButton.addEventListener('click', () => {
+        try {
+          localStorage.removeItem(historyKey);
+          calorieHistory = [];
+          showHistoryStatus('');
+          renderHistory();
+        } catch (error) {
+          console.error('Unable to clear calorie history from local storage.', error);
+          showHistoryStatus('تعذر مسح السجل المحفوظ. حاولي مرة أخرى.');
+        }
+      });
+
+      function saveCalculation(entry) {
+        calorieHistory.unshift(entry);
+        try {
+          localStorage.setItem(historyKey, JSON.stringify(calorieHistory));
+          showHistoryStatus('');
+        } catch (error) {
+          console.error('Unable to save calorie calculation to local storage.', error);
+          showHistoryStatus('تعذر حفظ الحساب في سجل هذا الجهاز، لكن يمكنك متابعة النتيجة.');
+        }
+        renderHistory();
+      }
+
+      /* ---------- تحميل مسبق للصورتين ---------- */
+      [man.dataset.male, man.dataset.female].forEach(src => { const i = new Image(); i.src = src; });
+
+      /* ---------- اختيار النوع + تغيير الصورة ---------- */
+      document.querySelectorAll('.cc-g').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cc-g').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          gender = btn.dataset.g;
+
+          const newSrc = gender === 'female' ? man.dataset.female : man.dataset.male;
+          if (man.dataset.current === newSrc) return;
+          man.dataset.current = newSrc;
+
+          man.classList.add('swap');
+          setTimeout(() => {
+            man.src = newSrc;
+            man.classList.remove('swap');
+          }, 250);
+        });
+      });
+
+      const today = new Date();
+      $('ccDob').max = [
+        today.getFullYear(),
+        String(today.getMonth() + 1).padStart(2, '0'),
+        String(today.getDate()).padStart(2, '0')
+      ].join('-');
+
+      function showErr(msg) {
+        const e = $('ccErr');
+        e.textContent = msg;
+        e.hidden = false;
+      }
+
+      function calcAge(dobStr) {
+        const dob = new Date(dobStr), now = new Date();
+        let age = now.getFullYear() - dob.getFullYear();
+        const m = now.getMonth() - dob.getMonth();
+        if (m < 0 || (m === 0 && now.getDate() < dob.getDate())) age--;
+        return age;
+      }
+
+      function countUp(el, target, dur) {
+        const start = performance.now();
+        (function step(t) {
+          const p = Math.min((t - start) / dur, 1);
+          el.textContent = ar(Math.round(target * p));
+          if (p < 1) requestAnimationFrame(step);
+        })(start);
+      }
+
+      /* ---------- فتح / قفل الـ Pop-up ---------- */
+      function openModal() {
+        modalEl.classList.add('show');
+        modalEl.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('cm-lock');
+        modalEl.querySelector('.cm-dialog').scrollTop = 0;
+
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          modalEl.classList.add('open');
+          // أنيميشن النتيجة
+          countUp($('cmCal'), result.cal, 1400);
+          const ratio = Math.min(result.cal / 3500, 1);
+          $('cmProg').style.strokeDasharray = (377 * ratio) + ' 503';
+          ['cmPrB', 'cmCaB', 'cmFaB'].forEach((id, i) => $(id).style.width = result.macros[i] + '%');
+        }));
+      }
+
+      function closeModal() {
+        modalEl.classList.remove('open');
+        modalEl.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('cm-lock');
+        setTimeout(() => modalEl.classList.remove('show'), 300);
+      }
+
+      $('cmClose').addEventListener('click', closeModal);
+      $('cmRedo').addEventListener('click', function () {
+        closeModal();
+        $('calc').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+      $('cmCta').addEventListener('click', function (event) {
+        event.preventDefault();
+        const notes = $('ms');
+        const calculationDate = new Intl.DateTimeFormat('ar-EG', {
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        }).format(new Date(result.createdAt));
+        const summary = [
+          'نتيجة حساب السعرات:',
+          `السعرات اليومية: ${ar(result.cal)} سعرة`,
+          `الهدف: ${result.goalLabel}`,
+          `معدل الأيض الأساسي: ${ar(result.bmr)} سعرة`,
+          `احتياج الحفاظ على الوزن: ${ar(result.tdee)} سعرة`,
+          `مؤشر كتلة الجسم: ${ar(result.bmi)} (${result.bmiLabel})`,
+          `بروتين: ${ar(result.grams[0])} جم، كربوهيدرات: ${ar(result.grams[1])} جم، دهون: ${ar(result.grams[2])} جم`,
+          `تاريخ الحساب: ${calculationDate}`
+        ].join('\n');
+        const previousSummary = bookingForm.dataset.calorieSummary || '';
+        const existingNotes = notes.value
+          .replace(previousSummary, '')
+          .replace(/(?:^|\r?\n)[ \t]*نتيجة حساب السعرات:[\s\S]*?^[ \t]*تاريخ الحساب:[^\r\n]*/gm, '')
+          .replace(/\n{3,}/g, '\n\n')
+          .trim();
+        const updatedNotes = existingNotes ? `${existingNotes}\n\n${summary}` : summary;
+        notes.maxLength = Math.max(notes.maxLength, updatedNotes.length);
+        notes.value = updatedNotes;
+        bookingForm.dataset.calorieSummary = summary;
+        closeModal();
+        location.hash = 'book';
+      });
+      modalEl.addEventListener('click', e => { if (e.target === modalEl) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && modalEl.classList.contains('show')) closeModal(); });
+
+      /* ---------- الحساب ---------- */
+      $('ccForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        this.classList.add('was-validated');
+        $('ccErr').hidden = true;
+
+        const dob = $('ccDob').value;
+        const h = parseFloat($('ccH').value);
+        const w = parseFloat($('ccW').value);
+        const act = parseFloat($('ccAct').value);
+        const goal = $('ccGoal').value;
+        const med = $('ccMed').value;
+
+        if (!gender) return showErr('من فضلك اختر النوع');
+        if (!dob) return showErr('من فضلك أدخل تاريخ الميلاد');
+        const age = calcAge(dob);
+        if (isNaN(age) || age < 10 || age > 100) return showErr('تاريخ الميلاد غير صحيح');
+        if (!h || h < 100 || h > 250) return showErr('أدخل طولاً صحيحاً بالسنتيمتر (100 - 250)');
+        if (!w || w < 25 || w > 300) return showErr('أدخل وزناً صحيحاً بالكيلوجرام (25 - 300)');
+        if (!act) return showErr('من فضلك اختر مستوى النشاط');
+        if (!goal) return showErr('من فضلك اختر هدفك الصحي');
+        if (!this.reportValidity()) return;
+
+        // 1) معدل الأيض الأساسي (Mifflin-St Jeor)
+        const bmr = 10 * w + 6.25 * h - 5 * age + (gender === 'male' ? 5 : -161);
+
+        // 2) الاحتياج اليومي للحفاظ على الوزن
+        const tdee = bmr * act;
+
+        // 3) تعديل حسب الهدف
+        let cal = tdee;
+        if (goal === 'lose') cal = tdee - 500;
+        if (goal === 'gain') cal = tdee + 400;
+        const minCal = gender === 'male' ? 1500 : 1200;
+        if (cal < minCal) cal = minCal;
+        cal = Math.round(cal);
+
+        // 4) الماكروز (بروتين / كارب / دهون)
+        let macros = [25, 50, 25];
+        if (goal === 'lose' || med === 'diabetes') macros = [30, 40, 30];
+        const grams = [
+          Math.round(cal * macros[0] / 100 / 4),
+          Math.round(cal * macros[1] / 100 / 4),
+          Math.round(cal * macros[2] / 100 / 9)
+        ];
+
+        // 5) BMI
+        const bmi = w / Math.pow(h / 100, 2);
+        let bmiTx = 'وزن طبيعي';
+        if (bmi < 18.5) bmiTx = 'نحافة';
+        else if (bmi >= 25 && bmi < 30) bmiTx = 'زيادة وزن';
+        else if (bmi >= 30) bmiTx = 'سمنة';
+
+        // 6) نصائح يومية
+        const baseSteps = { 1.2: 6000, 1.375: 8000, 1.55: 10000, 1.725: 12000, 1.9: 15000 }[act] || 8000;
+        const steps = Math.min(baseSteps + (goal === 'lose' ? 2000 : 0), 15000);
+        const sleep = age < 18 ? 9 : 8;
+        const water = (w * 0.035).toFixed(1);
+
+        const goalLabel = {
+          lose: 'إنقاص الوزن',
+          maintain: 'تثبيت الوزن',
+          gain: 'زيادة الوزن'
+        }[goal];
+        const bmiRounded = Number(bmi.toFixed(1));
+        result = {
+          cal,
+          macros,
+          bmr: Math.round(bmr),
+          tdee: Math.round(tdee),
+          bmi: bmiRounded,
+          bmiLabel: bmiTx,
+          grams,
+          goal,
+          goalLabel,
+          createdAt: new Date().toISOString()
+        };
+        saveCalculation({
+          cal,
+          bmi: bmiRounded,
+          bmr: result.bmr,
+          tdee: result.tdee,
+          grams,
+          goalLabel,
+          createdAt: result.createdAt
+        });
+
+        // ---------- تعبئة الـ Pop-up ----------
+        $('cmGoal').textContent = { lose: 'لإنقاص الوزن بشكل صحي', maintain: 'للحفاظ على وزنك الحالي', gain: 'لزيادة الوزن بشكل صحي' }[goal];
+        $('cmBmr').textContent = ar(Math.round(bmr));
+        $('cmTdee').textContent = ar(Math.round(tdee));
+        $('cmBmi').textContent = ar(bmi.toFixed(1));
+        $('cmBmiTx').textContent = 'BMI · ' + bmiTx;
+
+        $('cmPrG').textContent = ar(grams[0]) + ' جم';
+        $('cmCaG').textContent = ar(grams[1]) + ' جم';
+        $('cmFaG').textContent = ar(grams[2]) + ' جم';
+        $('cmPrP').textContent = ar(macros[0]) + '٪ من السعرات';
+        $('cmCaP').textContent = ar(macros[1]) + '٪ من السعرات';
+        $('cmFaP').textContent = ar(macros[2]) + '٪ من السعرات';
+
+        $('cmSteps').textContent = ar(steps) + ' خطوة يومياً';
+        $('cmSleep').textContent = 'النوم ' + ar(sleep) + ' ساعات';
+        $('cmBurn').textContent = 'تناول ' + ar(cal) + ' سعرة حرارية';
+        $('cmWater').textContent = 'شرب ' + ar(water) + ' لتر ماء';
+
+        const note = $('cmNote');
+        if (med !== 'none') {
+          note.innerHTML = '<i class="bi bi-info-circle"></i> الأرقام استرشادية، ولوجود حالة طبية يُفضّل حجز استشارة للحصول على برنامج غذائي مناسب لحالتك.';
+          note.hidden = false;
+        } else {
+          note.hidden = true;
+        }
+
+        // تصفير الأنيميشن ثم الفتح
+        $('cmCal').textContent = ar(0);
+        $('cmProg').style.strokeDasharray = '0 503';
+        ['cmPrB', 'cmCaB', 'cmFaB'].forEach(id => $(id).style.width = '0%');
+
+        openModal();
+      });
+    });
+  </script>
+</body>
+
 </html>
